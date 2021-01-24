@@ -57,7 +57,6 @@ int main(int argc, char *argv[]){
    exit(1);
  }
 
-
  while((n1=read(fd1, buffer, 100)) > 0) {
    printf("%s", buffer);
  }
