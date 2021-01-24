@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 	}
 	close(fd1);
 
-	printf_s("file %s created", argv[1]);
+	printf("file %s created", argv[1]);
 	
     return 0;
 }
