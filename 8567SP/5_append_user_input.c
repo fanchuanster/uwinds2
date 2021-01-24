@@ -2,7 +2,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <stdio.h>
-
+#include <string.h>
 
 int main(int argc, char *argv[]){ 
 
@@ -24,10 +24,11 @@ int main(int argc, char *argv[]){
  }
  printf("============please input the you would like to append, 256 chars at maximum================\n");
  scanf("%s", append);
- if (sizeof(append) > 0) {
-	 printf("input:%s", sizeof(append));
+ if (strlen(append) > 0) {
+	 printf("input:%s", strlen(append));
+	 flush();
 	 lseek(fd1, 0, SEEK_END);
-	 n1 = write(fd1, append, sizeof(append));
+	 n1 = write(fd1, append, strlen(append));
  } else {
 	 perror("scanf problem ");
 	 exit(2);
