@@ -22,7 +22,7 @@ int main(int argc, char *argv[]){
  while((n1=read(fd1, buffer, 100)) > 0) {
    printf("%s", buffer);
  }
- printf("============please input the you would like to append, 256 chars at maximum================\n");
+ printf("\n============please input the you would like to append, 256 chars at maximum================\n");
  scanf("%s", append);
  input_size = strlen(append);
  if (input_size > 0) {
@@ -47,9 +47,9 @@ int main(int argc, char *argv[]){
 
  close(fd1);
  
- printf("============display the updated file================\n");
+ printf("\n============display the updated file================\n");
  
- // outpu the udpated file
+ // output the udpated file
  if((fd1 = open(argv[1], O_RDONLY)) == -1){
 
    perror("file open problem ");
@@ -62,6 +62,7 @@ int main(int argc, char *argv[]){
    printf("%s", buffer);
  }
  close(fd1);
-
+ printf("\n");
+ 
  exit(0);
 }
