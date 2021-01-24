@@ -28,7 +28,7 @@ int main(int argc, char *argv[]){
  if (input_size > 0) {
 	 printf("input:%s", append);
 	 lseek(fd1, 0, SEEK_END);
-	 n1 = write(fd1, append, input_size);
+	 n1 = write(fd1, append, input_size+1);
  } else {
 	 perror("scanf problem ");
 	 exit(2);
