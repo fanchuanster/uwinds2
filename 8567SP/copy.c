@@ -6,7 +6,7 @@
 
 int main(int argc, char *argv[]){ 
 
- char buffer[100]; long int n1;
+ char buffer[100]; long int n1, wrote_size;
 
  int fd1, fd2;
 
@@ -21,13 +21,14 @@ int main(int argc, char *argv[]){
  }
 
 
- while((n1=read(fd1, buffer, 512) > 0))  
-
-   if(write(fd2, buffer, n1) != n1){
+ while((n1=read(fd1, buffer, sizeof(buffer))) > 0) {
+   wrote_size = write(fd2, buffer, n1); 
+   if(wrote_size != n1){
 
        perror("writing problem "); exit(3);
 
     }
+ }
 
 
 
