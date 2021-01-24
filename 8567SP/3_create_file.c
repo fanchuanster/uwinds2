@@ -15,8 +15,6 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 
-	// for (i = 0; i < sizeof(pp) / sizeof(char**); i++) {
-		// for (j = 0; j < sizeof(*pp) / sizeof(char*); j++) {
 	for (i = 0; i < 2; i++) {
 		for (j = 0; j < 4; j++) {
 			printf("%s", pp[i][j]);
@@ -35,7 +33,7 @@ int main(int argc, char *argv[])
 	}
 	close(fd1);
 
-	// printf("file %s created", argv[1]);
+	printf("file %s created", argv[1]);
 	
     return 0;
 }
