@@ -22,9 +22,11 @@ int main(int argc, char *argv[]){
  while((n1=read(fd1, buffer, 100)) > 0) {
    printf("%s", buffer);
  }
- printf("\n+============please input the you would like to append, 256 chars at maximum================\n");
+ printf("============please input the you would like to append, 256 chars at maximum================\n");
  input_size = scanf("%s", append);
  if (input_size >= 0) {
+	 printf("input:%s", append);
+	 lseek(fd1, 0, SEEK_END);
 	 n1 = write(fd1, append, n1);
  } else {
 	 perror("scanf problem ");
