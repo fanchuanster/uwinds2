@@ -26,7 +26,6 @@ int main(int argc, char *argv[]){
  scanf("%s", append);
  if (strlen(append) > 0) {
 	 printf("input:%s", strlen(append));
-	 flush();
 	 lseek(fd1, 0, SEEK_END);
 	 n1 = write(fd1, append, strlen(append));
  } else {
