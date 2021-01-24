@@ -11,7 +11,7 @@ int main(int argc, char *argv[]){
  int fd1;
 
 
- if((fd1 = open(argv[1], O_WRONLY)) == -1){
+ if((fd1 = open(argv[1], O_RDONLY | O_APPEND)) == -1){
 
    perror("file open problem ");
 
