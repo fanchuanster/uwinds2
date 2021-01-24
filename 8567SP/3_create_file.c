@@ -6,33 +6,22 @@
 
 int main(int argc, char *argv[])
 {
-	char* pp[2][4] = { { "101", "GM", "Buick", "2010" }, { "102", "Ford", "Lincoln", "2005" } };
-	int i, j, n1;
-	int fd1;
+	long n1;
+	char* str = "101   GM\tBuick\t2010\n102   Ford\tLincoln\t2005";
 	
-	if ((fd1 = open(argv[1], O_CREAT | O_WRONLY | O_TRUNC, 0700)) == -1) {
+	if ((fd1 = open("list1.txt", O_CREAT | O_WRONLY | O_TRUNC, 0700)) == -1) {
 		perror("file problem ");
 		exit(1);
 	}
 
-	for (i = 0; i < 2; i++) {
-		for (j = 0; j < 4; j++) {
-			n1 = write(fd1, pp[i][j], strlen(pp[i][j]));
-			if (n1 != strlen(pp[i][j])) {
-				perror("write problem "); exit(2);
-			}
-			if (j == 0) {
-				write(fd1, "   ", 3);
-			}
-			else {
-				write(fd1, "\t", 1);
-			}
-		}
-		write(fd1, "\n", 1);
+	n1 = write(fd1, str, strlen(str));
+	if (n1 != strlen(str)) {
+		perror("write problem ");
+		exit(1);
 	}
 	close(fd1);
 
-	printf("file %s created", argv[1]);
+	printf("file list1.txt created", argv[1]);
 	
     return 0;
 }
