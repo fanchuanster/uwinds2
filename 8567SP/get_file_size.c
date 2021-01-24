@@ -27,7 +27,7 @@ int main(int argc, char *argv[]){
 
  close(fd1);
  
- printf("%d\n", read_bytes);
+ printf("%d\n", filesize);
 
  exit(0);
 }
