@@ -23,7 +23,7 @@ int main(int argc, char *argv[]){
    printf("%s", buffer);
  }
  printf("\n+============please input the you would like to append, 256 chars at maximum================\n");
- n1 = scanf_s("%s", append);
+ n1 = scanf("%s", append);
  if (n1 > 0) {
 	 write(fd1, append, n1);
  }
