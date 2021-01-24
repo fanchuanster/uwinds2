@@ -5,3 +5,4 @@ Fix: add parenthesis around n1= read(fd1, buffer, 512) ensure n1 is assigned to 
 Fix: change 512 to the size of the receiving buffer.
 
 By debugging, I found abnormal return value of read, which was 1 instead of expected 512, meanwhile by scrutinizing the code, found size of the buffer was only 100, but expected maximum read size was 512.
+q

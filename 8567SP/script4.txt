@@ -1,0 +1,8 @@
+Script started on 2021-01-24 08:12:35-05:00 [TERM="xterm" TTY="/dev/pts/28" COLUMNS="80" LINES="24"]
+]0;dong23@charlie: ~/ws/uwinds2/8567SP[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP[00m$ gc [Kc 4_count_lines.c 
+]0;dong23@charlie: ~/ws/uwinds2/8567SP[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP[00m$ ./a.out copy.c 
+50 lines
+]0;dong23@charlie: ~/ws/uwinds2/8567SP[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP[00m$ exit
+exit
+
+Script done on 2021-01-24 08:12:53-05:00 [COMMAND_EXIT_CODE="0"]
