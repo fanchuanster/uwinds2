@@ -17,7 +17,6 @@ int main(int argc, char *argv[])
 
 	for (i = 0; i < 2; i++) {
 		for (j = 0; j < 4; j++) {
-			printf("%s", pp[i][j]);
 			n1 = write(fd1, pp[i][j], strlen(pp[i][j]));
 			if (n1 != strlen(pp[i][j])) {
 				perror("write problem "); exit(2);
