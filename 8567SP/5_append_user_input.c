@@ -46,6 +46,22 @@ int main(int argc, char *argv[]){
  }
 
  close(fd1);
+ 
+ printf("============display the updated file================\n");
+ 
+ // outpu the udpated file
+ if((fd1 = open(argv[1], O_RDONLY)) == -1){
+
+   perror("file open problem ");
+
+   exit(1);
+ }
+
+
+ while((n1=read(fd1, buffer, 100)) > 0) {
+   printf("%s", buffer);
+ }
+ close(fd1);
 
  exit(0);
 }
