@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int main()
+int main(int argc, char *argv[])
 {
 	char* pp[2][4] = { { "101", "GM", "Buick", "2010" }, { "102", "Ford", "Lincoln", "2005" } };
 	int i, j, n1;
