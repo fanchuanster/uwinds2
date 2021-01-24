@@ -20,10 +20,6 @@ int main(int argc, char *argv[]){
 
 
  while((n1=read(fd1, &ch, 1)) > 0) {
-	if (0 == count) {
-		count = 1;
-		continue;
-	}
 	if (ch == '\n') {
 		count++;
 	}
