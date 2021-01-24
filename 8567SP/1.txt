@@ -1,5 +1,5 @@
-There are two problems with “read(fd1, buffer, 512) > 0” in copy.c:
-1.	mistakenly assigned value of “read(fd1, buffer, 512) > 0” which is a Boolean to n1, owning to that assignment is of less precedence than greater than operator.
+There are two problems with "read(fd1, buffer, 512) > 0" in copy.c:
+1.	mistakenly assigned value of "read(fd1, buffer, 512) > 0" which is a Boolean to n1, owning to that assignment is of less precedence than greater than operator.
 Fix: add parenthesis around n1= read(fd1, buffer, 512) ensure n1 is assigned to the return value of read
 2.	Specified read size 512 which is greater than the receiving buffer.
 Fix: change 512 to the size of the receiving buffer.
