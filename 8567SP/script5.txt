@@ -1,0 +1,17 @@
+Script started on 2021-01-24 08:42:25-05:00 [TERM="xterm" TTY="/dev/pts/29" COLUMNS="80" LINES="24"]
+]0;dong23@charlie: ~/ws/uwinds2/8567SP[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP[00m$ gcc 5_append_user_input.c 
+]0;dong23@charlie: ~/ws/uwinds2/8567SP[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP[00m$ ./a.out test.txt 
+this is just a test file for task5
+
+þ
+============please input the you would like to append, 256 chars at maximum================
+appending
+input:appending
+============display the updated file================
+this is just a test file for task5
+
+appending
+]0;dong23@charlie: ~/ws/uwinds2/8567SP[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP[00m$ exit
+exit
+
+Script done on 2021-01-24 08:42:42-05:00 [COMMAND_EXIT_CODE="0"]
