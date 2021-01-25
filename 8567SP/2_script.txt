@@ -1,0 +1,8 @@
+Script started on 2021-01-24 20:24:45-05:00 [TERM="xterm" TTY="/dev/pts/43" COLUMNS="80" LINES="24"]
+]0;dong23@charlie: ~/ws/uwinds2/8567SP[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP[00m$ gcc 2_lseek.c 
+]0;dong23@charlie: ~/ws/uwinds2/8567SP[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP[00m$ a[K./a.out copy.c
+674
+]0;dong23@charlie: ~/ws/uwinds2/8567SP[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP[00m$ exit
+exit
+
+Script done on 2021-01-24 20:25:09-05:00 [COMMAND_EXIT_CODE="0"]
