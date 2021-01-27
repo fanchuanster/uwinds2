@@ -1,2 +1,0 @@
-101   GM	Buick	2010
-102   Ford	Lincoln	2005
