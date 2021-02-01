@@ -1,0 +1,17 @@
+Script started on 2021-02-01 10:17:41-05:00 [TERM="xterm" TTY="/dev/pts/14" COLUMNS="80" LINES="24"]
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign2[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign2[00m$ gc 4_append_std.c -o append_std
+gc: option -o unrecognized - ignored
+Error: 4_append_std.c: syntax error in line 5 near 'int'
+Can't open append_std
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign2[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign2[00m$ gc 4_append_std.c -o append_std[C[C[1@c
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign2[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign2[00m$ ./append_std file1 file2 combinedfil e
+file1 content
+file2 content
+
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign2[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign2[00m$ cat combinedfile 
+file1 content
+file2 content
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign2[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign2[00m$ exit
+exit
+
+Script done on 2021-02-01 10:18:34-05:00 [COMMAND_EXIT_CODE="0"]
