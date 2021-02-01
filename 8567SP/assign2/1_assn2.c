@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 void filecopy(int fd1, int fd2)
 {
     const int buffer_size = 100;
-    char buffer[buffer_size]
+    char buffer[buffer_size];
     long read_size;
     while ((read_size = read(fd1, buffer, buffer_size)) != -1)
     {
