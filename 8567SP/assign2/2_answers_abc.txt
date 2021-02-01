@@ -1,0 +1,7 @@
+a. 388 bytes
+b. it moves current offset pointer to position 10L;
+   and write a char of value -1;
+   then rewind to the beginning of the file.
+c. 10 bytes
+
+File sizes reported in a and c differ, because in c it wrote -1 which is the value of EOF at position 10, which made the program end counting bytes at that position.
