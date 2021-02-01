@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
     
-    int paramscounter = argc
+    int paramscounter = argc;
     while (--paramscounter > 1)
     {
         if ((fd = open(*++argv, O_RDONLY)) == -1)
