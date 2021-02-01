@@ -60,6 +60,6 @@ void filecopy(FILE* fd1, FILE* fd2)
     while ((read_size = fread(buffer, buffer_size, 1, fd1)) > 0)
     {
         n = fwrite(buffer, read_size, 1, fd2);
-        print("%d bytes writen", n);
+        printf("%d bytes writen\n", n);
     }
 }
