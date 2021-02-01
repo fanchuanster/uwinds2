@@ -1,0 +1,33 @@
+Script started on 2021-02-01 09:41:21-05:00 [TERM="xterm" TTY="/dev/pts/14" COLUMNS="80" LINES="24"]
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign2[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign2[00m$ gcc 3_append.c -o append
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign2[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign2[00m$ ./append file1 file2 combind[Kedfile
+file1
+content
+file2
+content
+
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign2[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign2[00m$ ls -l
+total 33
+-rw-r--r-- 1 dong23 temp   829 Feb  1 05:58 1_assn2.c
+-rw-r--r-- 1 dong23 temp  1446 Feb  1 08:49 1_script.txt
+-rw-r--r-- 1 dong23 temp   410 Feb  1 08:49 1_timing.log
+-rw-r--r-- 1 dong23 temp   321 Feb  1 09:17 2_answers_abc.txt
+-rw-r--r-- 1 dong23 temp   388 Feb  1 08:52 2_filesize2.c
+-rw-r--r-- 1 dong23 temp   824 Feb  1 08:51 2_script.txt
+-rw-r--r-- 1 dong23 temp   662 Feb  1 08:51 2_timing.log
+-rw-r--r-- 1 dong23 temp  1240 Feb  1 09:39 3_append.c
+-rw-r--r-- 1 dong23 temp     0 Feb  1 09:41 3_script.txt
+-rw-r--r-- 1 dong23 temp     0 Feb  1 09:41 3_timing.log
+-rwxr-xr-x 1 dong23 temp 17000 Feb  1 09:41 [0m[01;32mappend[0m
+-rwx------ 1 dong23 temp    28 Feb  1 09:41 [01;32mcombinedfile[0m
+-rw-r--r-- 1 dong23 temp    14 Feb  1 09:37 file1
+-rw-r--r-- 1 dong23 temp    14 Feb  1 09:37 file2
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign2[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign2[00m$ cat cobi[K[Kmbinedfile 
+file1
+content
+file2
+content
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign2[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign2[00m$ exit
+exit
+
+Script done on 2021-02-01 09:42:18-05:00 [COMMAND_EXIT_CODE="0"]
