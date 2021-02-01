@@ -10,13 +10,13 @@ int main(int argc, char *argv[])
     if (argc < 3)
     {
         printf("usage: ./append filename1 filename2 combinednewfile");
-        exit(0);
+        return 1;
     }
 
     if ((fdout = open(argv[argc-1], O_WRONLY)) == -1)
     {
         printf("Failed to open file %s for writing", argv[argc-1]);
-        exit(1);
+        return (2);
     }
     
     int paramscounter = argc;
@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
         if ((fd = open(*++argv, O_RDONLY)) == -1)
         {
             printf("cat: can not open %s\n", *argv);
-            return 1;
+            return 3;
         }
         else
         {
@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
     if ((fdout = open(argv[argc-1], O_RDONLY)) == -1)
     {
         printf("Failed to open file %s for reading", argv[argc-1]);
-        exit(2);
+        return (4);
     }
 
     filecopy(fdout, STDOUT_FILENO);
