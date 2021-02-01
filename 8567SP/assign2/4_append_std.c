@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    if ((fdout = fopen(argv[argc-1], "w+")) == -1)
+    if ((fdout = fopen(argv[argc-1], "w+")) == NULL)
     {
         printf("Failed to open file %s for writing", argv[argc-1]);
         perror("error: ");
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
     int paramscounter = argc;
     while (--paramscounter > 1)
     {
-        if ((fd = fopen(*++argv, "r")) == -1)
+        if ((fd = fopen(*++argv, "r")) == NULL)
         {
             printf("cat: can not open %s\n", *argv);
             return 3;
