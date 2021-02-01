@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 
     if ((fdout = open(argv[argc-1], O_WRONLY)) == -1)
     {
-        perror("Failed to open file %s for writing", argv[argc-1])
+        perror("Failed to open file %s for writing", argv[argc-1]);
         return (2);
     }
     
