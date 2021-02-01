@@ -62,4 +62,5 @@ void filecopy(FILE* fd1, FILE* fd2)
         n = fwrite(buffer, read_size, 1, fd2);
         printf("%d bytes writen\n", n);
     }
+    printf("%d read_size", read_size);
 }
