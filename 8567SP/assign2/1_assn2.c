@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 
     if (argc == 1)
     {
-        filecopy(stdin, stdout);
+        filecopy(STDIN_FILENO, STDOUT_FILENO);
     }
     else
     {
