@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
     FILE* fd;
     FILE* fdout;
     int i;
-    void filecopy(int, int);
+    void filecopy(FILE*, FILE*);
 
     // for (i=0; i<argc; i++)
     // {
