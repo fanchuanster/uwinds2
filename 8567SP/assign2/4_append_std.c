@@ -55,8 +55,11 @@ void filecopy(FILE* fd1, FILE* fd2)
     const int buffer_size = 100;
     char buffer[buffer_size];
     long read_size;
+    int n;
+    
     while ((read_size = fread(buffer, buffer_size, 1, fd1)) > 0)
     {
-        fwrite(buffer, read_size, 1, fd2);
+        n = fwrite(buffer, read_size, 1, fd2);
+        print("%d bytes writen", n);
     }
 }
