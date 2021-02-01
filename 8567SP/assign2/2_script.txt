@@ -1,0 +1,10 @@
+Script started on 2021-02-01 08:50:46-05:00 [TERM="xterm" TTY="/dev/pts/14" COLUMNS="80" LINES="24"]
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign2[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign2[00m$ ls -lt 2_filesize2.c 
+-rw-r--r-- 1 dong23 temp 388 Feb  1 08:44 2_filesize2.c
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign2[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign2[00m$ gcc 2_filesize2.c -o filez[Ksize
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign2[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign2[00m$ ./filesize 2_filesize2.c 
+Size of 2_filesize2.c is 10
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign2[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign2[00m$ exit
+exit
+
+Script done on 2021-02-01 08:51:43-05:00 [COMMAND_EXIT_CODE="0"]
