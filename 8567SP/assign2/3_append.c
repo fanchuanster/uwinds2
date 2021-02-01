@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    if ((fdout = open(argv[argc-1], O_CREAT | O_WRONLY)) == -1)
+    if ((fdout = open(argv[argc-1], O_CREAT | O_WRONLY, 0700)) == -1)
     {
         printf("Failed to open file %s for writing", argv[argc-1]);
         perror("error: ");
