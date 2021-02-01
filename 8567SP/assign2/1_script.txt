@@ -1,0 +1,49 @@
+Script started on 2021-02-01 08:48:58-05:00 [TERM="xterm" TTY="/dev/pts/14" COLUMNS="80" LINES="24"]
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign2[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign2[00m$ gcc -g 1_assn2.c 
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign2[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign2[00m$ ./a.out 1_assn2.c 
+#include <stdio.h>
+#include <unistd.h> 
+#include <fcntl.h>
+
+int main(int argc, char *argv[])
+{
+    int fd;
+    void filecopy(int, int);
+
+    if (argc == 1)
+    {
+        filecopy(STDIN_FILENO, STDOUT_FILENO);
+    }
+    else
+    {
+        while (--argc > 0)
+        {
+            if ((fd = open(*++argv, O_RDONLY)) == -1)
+            {
+                printf("cat: can not open %s\n", *argv);
+                return 1;
+            }
+            else
+            {
+                filecopy(fd, STDOUT_FILENO);
+                close(fd);
+            }
+        }
+    }
+    printf("\n");
+    return 0;
+}
+void filecopy(int fd1, int fd2)
+{
+    const int buffer_size = 100;
+    char buffer[buffer_size];
+    long read_size;
+    while ((read_size = read(fd1, buffer, buffer_size)) > 0)
+    {
+        write(fd2, buffer, read_size);
+    }
+}
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign2[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign2[00m$ exit
+exit
+
+Script done on 2021-02-01 08:49:41-05:00 [COMMAND_EXIT_CODE="0"]
