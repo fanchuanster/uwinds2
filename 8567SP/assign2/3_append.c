@@ -6,7 +6,13 @@
 int main(int argc, char *argv[])
 {
     int fd, fdout;
+    int i;
     void filecopy(int, int);
+
+    for (i=0; i<argc; i++)
+    {
+        printf(argv[i]);
+    }
 
     if (argc < 3)
     {
