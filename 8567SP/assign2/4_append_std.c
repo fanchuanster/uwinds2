@@ -52,15 +52,10 @@ int main(int argc, char *argv[])
 }
 void filecopy(FILE* fd1, FILE* fd2)
 {
-    const int buffer_size = 100;
-    char buffer[buffer_size];
-    long read_size;
-    int n;
+    int ch;
     
-    while ((read_size = fread(buffer, buffer_size, 1, fd1)) > 0)
+    while ((ch = getc(fd1)) != EOF)
     {
-        n = fwrite(buffer, read_size, 1, fd2);
-        printf("%d bytes writen\n", n);
+        putc(ch, fd2); 
     }
-    printf("%d read_size", read_size);
 }
