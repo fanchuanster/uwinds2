@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
         }
     }
 
-    lseek(fdout, 0, SEEK_SET);
+    fseek(fdout, 0, SEEK_SET);
 
     filecopy(fdout, stdout);
     fclose(fdout);
