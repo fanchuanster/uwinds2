@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
             }
         }
     }
-    printf("program end.");
+    printf("\n");
     return 0;
 }
 void filecopy(int fd1, int fd2)
