@@ -10,15 +10,16 @@ int main(int argc, char *argv[]){
 
 	fd = fopen(argv[1], "r+");      
 	 
-	 /*fseek(fd, 10L, SEEK_SET);
-	 putc(-1, fd);	
-	 rewind(fd);  */               //try uncomment this block, to see what it does.
+	fseek(fd, 10L, SEEK_SET);
+	putc(-1, fd);	
+	rewind(fd);                 //try uncomment this block, to see what it does.
 
 	do{
 		ch=getc(fd);  
 		fileSize++;
-	//	printf("fileSize=%d\n", fileSize);
 	} while( ch != EOF);
+
+    fclose(fd);
 	
 	printf("Size of %s is %d\n", argv[1], fileSize);
 }
