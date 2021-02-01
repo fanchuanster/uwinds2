@@ -22,8 +22,8 @@ int main(int argc, char *argv[])
             }
             else
             {
-                filecopy(fp, stdout);
-                fclose(fp);
+                filecopy(fd, STDOUT_FILENO);
+                fclose(fd);
             }
         }
     }
