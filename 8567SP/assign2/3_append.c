@@ -9,10 +9,10 @@ int main(int argc, char *argv[])
     int i;
     void filecopy(int, int);
 
-    for (i=0; i<argc; i++)
-    {
-        printf("%s\n", argv[i]);
-    }
+    // for (i=0; i<argc; i++)
+    // {
+    //     printf("%s\n", argv[i]);
+    // }
 
     if (argc < 3)
     {
@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
 
     filecopy(fdout, STDOUT_FILENO);
     close(fdout);
-    
+
     printf("\n");
     return 0;
 }
