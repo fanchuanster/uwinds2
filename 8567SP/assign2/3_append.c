@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    if ((fdout = open(argv[argc-1], O_CREAT | O_WRONLY, 0700)) == -1)
+    if ((fdout = open(argv[argc-1], O_CREAT | O_RDWR, 0700)) == -1)
     {
         printf("Failed to open file %s for writing", argv[argc-1]);
         perror("error: ");
@@ -41,16 +41,12 @@ int main(int argc, char *argv[])
             close(fd);
         }
     }
-    close(fdout);
 
-    if ((fdout = open(argv[argc-1], O_RDONLY)) == -1)
-    {
-        printf("Failed to open file %s for reading", argv[argc-1]);
-        return (4);
-    }
+    lseek(fdout, 0, SEEK_SET);
 
     filecopy(fdout, STDOUT_FILENO);
-
+    close(fdout);
+    
     printf("\n");
     return 0;
 }
