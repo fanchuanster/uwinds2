@@ -16,8 +16,9 @@ int main(int argc, char * argv[])
 	while(!feof(inf)) {
 		char *p;
 		p=fgets(buf, 512, inf);
-		fputs(buf,stdout);
-
+		if (NULL != p) {
+			fputs(buf,stdout);
+		}
 	}
 	
 	fclose(inf);
