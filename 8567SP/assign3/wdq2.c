@@ -11,5 +11,5 @@ int main(){
 		if ( fork()== 0 )
 			printf("Hi, I am child. My pid is %d with ppid %d\n", getpid(), getppid());
 	}
-	sleep(1)
+	sleep(1);
 }
