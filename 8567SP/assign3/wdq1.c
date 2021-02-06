@@ -2,7 +2,7 @@
 #include <unistd.h>
 
 int main(){
-	printf("before fork, my pid is %d, ppid is %d\n" , getpid(), getppid());
+	printf("before fork, my pid is %d with ppid %d\n" , getpid(), getppid());
 	fork();
 	printf("after 1 fork, my pid is %d with ppid %d\n" , getpid(), getppid());
 	fork();
