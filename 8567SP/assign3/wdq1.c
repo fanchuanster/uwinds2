@@ -9,5 +9,5 @@ int main(){
 	printf("after 2 fork, my pid is %d, ppid is %d\n" , getpid(), getppid());
 	fork();
 	printf("after 3 fork, my pid is %d, ppid is %d\n" , getpid(), getppid());
-	sleep(1)
+	sleep(1);
 }
