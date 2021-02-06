@@ -9,6 +9,6 @@ int main(){
 	for (i=0; i<3; i++){
 
 		if ( fork()== 0 )
-			printf("Hi, I am child. My pid is %d\n", getpid());
+			printf("Hi, I am child. My pid is %d with ppid %d\n", getpid(), getppid());
 	}
 }
