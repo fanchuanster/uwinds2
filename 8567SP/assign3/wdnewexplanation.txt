@@ -1,4 +1,4 @@
 When the last line was read, it actually has reached the end of the file but the end-of-file indiator was not set untill a next read attempt.
 
-The last read attempt returned nothing and set the EOF indicator, in new.c it did not validate the read by checking return value neither by checking EOF of file, 
-but wrote to the output the content of the buf, which was the content of last line by last read, so the last line appears twice in the output.
+The last read attempt returned nothing and set the EOF indicator, in new.c it did not validate the read by checking return value neither by checking EOF of file,
+but wrote to the output the content of the buf, which was the content of last line by last read, so the last line appears twice in the output
