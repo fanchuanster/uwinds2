@@ -38,7 +38,7 @@ int main(int argc, char * argv[])
 			int cur = ftell(inf);
 			char* p = fgets(buf, 1024, inf);
 			assert(p != NULL);
-			fputs(p, outf);
+			fprintf(outf, "%s\n", p);
 			fseek(inf, cur, SEEK_SET);
 		}
 	} while (0 == fseek(inf, -2, SEEK_CUR));
