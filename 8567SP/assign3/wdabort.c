@@ -24,7 +24,7 @@ int main() {
 		int child_pid  = wait(&status);
 
 		printf("My child %d has terminated\n",child_pid);
-		printf("I have received the status = %\n",status);  
+		printf("I have received the status = %d\n",status);  
 
 		int child_status = status >> 8;
 
