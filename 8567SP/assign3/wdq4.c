@@ -34,16 +34,16 @@ int main(int argc, char * argv[])
 	do {
 		cur = ftell(inf);
 		c = fgetc(inf);
-		if (c == '\n')
+		
+		if (cur == 0 || c == '\n')
 		{
 			char* p = fgets(buf, 1024, inf);
 			if (p)
 			{
 				fputs(p, outf);
 			}
-				
-			fseek(inf, cur, SEEK_SET);
 		}
+		fseek(inf, cur, SEEK_SET);
 	} while (0 == fseek(inf, -1, SEEK_CUR));
 	
 	fclose(inf);
