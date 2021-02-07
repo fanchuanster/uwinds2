@@ -32,20 +32,19 @@ int main(int argc, char * argv[])
 	}
 
 	do {
+		cur = ftell(inf);
 		c = fgetc(inf);
 		if (c == '\n')
 		{
-			int cur = ftell(inf);
 			char* p = fgets(buf, 1024, inf);
 			if (p)
 			{
 				fputs(p, outf);
 			}
-			// fputs("\n", outf);
 				
 			fseek(inf, cur, SEEK_SET);
 		}
-	} while (0 == fseek(inf, -2, SEEK_CUR));
+	} while (0 == fseek(inf, -1, SEEK_CUR));
 	
 	fclose(inf);
 	fclose(outf);
