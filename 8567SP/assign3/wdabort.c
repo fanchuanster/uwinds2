@@ -26,10 +26,10 @@ int main() {
 		printf("My child %d has terminated\n",child_pid);
 		printf("I have received the status = %d\n",status);  
 
-		int child_status = status >> 8;
+		int child_status = WEXITSTATUS(status);
 
-		int signal = status & 0x7F;  
-		int core = status & 0x80;
+		int signal = WTERMSIG(status);  
+		int core = WCOREDUMP(status);
 
 		printf("Child status = %d Signal = %d Core = %d\n",
 				child_status, signal, core);
