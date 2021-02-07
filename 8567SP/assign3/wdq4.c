@@ -48,14 +48,17 @@ int main(int argc, char * argv[])
 		{
 			copyline(inf, outf);
 		}
-
-		c = fgetc(inf);
-		if (c == '\n')
+		else
 		{
-			copyline(inf, outf);
-		}
+			c = fgetc(inf);
+			if (c == '\n')
+			{
+				copyline(inf, outf);
+			}
 
-		fseek(inf, cur, SEEK_SET);
+			fseek(inf, cur, SEEK_SET);
+		}
+		
 	} while (0 == fseek(inf, -1, SEEK_CUR));
 	
 	fclose(inf);
