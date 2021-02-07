@@ -34,7 +34,7 @@ int main(int argc, char * argv[])
 	}
 
 	do {
-		c = fgetc(inf)
+		c = fgetc(inf);
 		if (c == '\n')
 		{
 			int cur = ftell(inf);
