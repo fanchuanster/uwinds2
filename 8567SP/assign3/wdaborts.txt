@@ -1,0 +1,53 @@
+Script started on 2021-02-07 00:44:11-05:00 [TERM="xterm" TTY="/dev/pts/6" COLUMNS="80" LINES="24"]
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign3[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign3[00m$ cat wdabort.c 
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+#include <sys/types.h>
+#include <sys/wait.h>
+
+int main() {  
+	int newpid;
+	
+	printf("before: mypid is %d\n", getpid());  
+
+	if ((newpid = fork()) == -1 )
+		perror("fork");  
+	else if (newpid == 0){
+		printf("I am the child %d now sleeping...\n",getpid());  
+		sleep(5);
+		abort();
+	}
+	else{
+		printf("I am the parent %d\n",getpid());  
+
+		int status;
+		int child_pid  = wait(&status);
+
+		printf("My child %d has terminated\n",child_pid);
+		printf("I have received the status = %d\n",status);  
+
+		int child_status = WEXITSTATUS(status);
+
+		int signal = WTERMSIG(status);  
+		int core = WCOREDUMP(status);
+
+		printf("Child status = %d Signal = %d Core = %d\n",
+				child_status, signal, core);
+	}
+}
+
+
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign3[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign3[00m$ gcc wdabort.c 
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign3[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign3[00m$ ./a.out 
+before: mypid is 2727
+I am the parent 2727
+I am the child 2728 now sleeping...
+My child 2728 has terminated
+I have received the status = 6
+Child status = 0 Signal = 6 Core = 0
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign3[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign3[00m$ exit
+exit
+
+Script done on 2021-02-07 00:44:37-05:00 [COMMAND_EXIT_CODE="0"]
