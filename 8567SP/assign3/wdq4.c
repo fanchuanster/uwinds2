@@ -32,9 +32,9 @@ int main(int argc, char * argv[])
 	}
 
 	do {
-		cur = ftell(inf);
+		int cur = ftell(inf);
 		c = fgetc(inf);
-		
+
 		if (cur == 0 || c == '\n')
 		{
 			char* p = fgets(buf, 1024, inf);
