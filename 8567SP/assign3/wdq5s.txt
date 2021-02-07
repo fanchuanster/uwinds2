@@ -1,0 +1,63 @@
+Script started on 2021-02-07 05:14:49-05:00 [TERM="xterm" TTY="/dev/pts/8" COLUMNS="80" LINES="24"]
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign3[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign3[00m$ c[Kcaat [Kwcq5[K[K[K[K[K[Kt wdq5.c 
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+#include <sys/types.h>
+#include <sys/wait.h>
+
+int main() {  
+	int newpid;
+	int status;
+
+	const char* message_pattern = "I am a child process, my parent pid = %d, my pid = %d\n";
+
+	printf("I am the parent process, my pid = %d\n", getpid());
+
+	if ((newpid = fork()) == -1 )
+	{
+		perror("fork"); 
+		return -1;
+	}
+
+	if (newpid == 0) {
+		printf(message_pattern, getppid(), getpid());
+		newpid = fork();
+		if (newpid == 0) {
+			sleep(1);
+			printf(message_pattern, getppid(), getpid());
+		} else {
+			waitpid(newpid, &status, 0);
+		}
+	}
+	else {
+		newpid = fork();
+		
+		if (newpid == 0) {
+			printf(message_pattern, getppid(), getpid());
+			newpid = fork();
+			if (newpid == 0) {
+				sleep(1);
+				printf(message_pattern, getppid(), getpid());
+			} else {
+				waitpid(newpid, &status, 0);
+			}
+		} else {
+			sleep(2);
+		}
+	}
+}
+
+
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign3[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign3[00m$ gcc wdq5.c 
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign3[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign3[00m$ ./a.out 
+I am the parent process, my pid = 865
+I am a child process, my parent pid = 865, my pid = 867
+I am a child process, my parent pid = 865, my pid = 868
+I am a child process, my parent pid = 867, my pid = 872
+I am a child process, my parent pid = 868, my pid = 873
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign3[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign3[00m$ exit
+exit
+
+Script done on 2021-02-07 05:15:24-05:00 [COMMAND_EXIT_CODE="0"]
