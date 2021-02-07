@@ -13,7 +13,7 @@ int main(int argc, char * argv[])
 	if (argc != 3)
 	{
 		printf("usage:\n reverseFile infile outfile");
-		exit(2);
+		return (-2);
 	}
 
 	if ((inf = fopen(argv[1],"r")) == NULL)
