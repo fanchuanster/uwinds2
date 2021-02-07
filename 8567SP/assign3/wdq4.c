@@ -8,7 +8,7 @@ void copyline(FILE* inf, FILE* outf)
 	char* p = fgets(buf, 1024, inf);
 	if (p)
 	{
-		printf("writing - %s", p);
+		// printf("writing - %s", p);
 		fputs(p, outf);
 	}
 }
