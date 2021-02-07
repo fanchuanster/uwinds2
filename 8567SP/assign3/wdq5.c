@@ -24,6 +24,8 @@ int main() {
 		if (newpid == 0) {
 			sleep(1);
 			printf(message_pattern, getppid(), getpid());
+		} else {
+			waitpid(newpid);
 		}
 	}
 	else {
@@ -35,6 +37,8 @@ int main() {
 			if (newpid == 0) {
 				sleep(1);
 				printf(message_pattern, getppid(), getpid());
+			} else {
+				waitpid(newpid);
 			}
 		} else {
 			printf("I am the parent process, my pid = %d\n", getpid());
