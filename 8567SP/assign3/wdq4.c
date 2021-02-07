@@ -39,7 +39,6 @@ int main(int argc, char * argv[])
 			char* p = fgets(buf, 1024, inf);
 			if (p)
 			{
-				fprintf(outf, "%s\n", p);
 				fputs(p, outf);
 			}
 			fputs("\n", outf);
