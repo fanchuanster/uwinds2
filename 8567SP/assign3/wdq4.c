@@ -41,7 +41,7 @@ int main(int argc, char * argv[])
 			{
 				fputs(p, outf);
 			}
-			fputs("\n", outf);
+			// fputs("\n", outf);
 				
 			fseek(inf, cur, SEEK_SET);
 		}
