@@ -8,6 +8,8 @@ int main(int argc, char * argv[])
 	int c;
 	char buf[1024];
 
+	assert(0);
+
 	if (argc != 3)
 	{
 		printf("usage:\n reverseFile infile outfile");
@@ -41,7 +43,7 @@ int main(int argc, char * argv[])
 			fputs(p, outf);
 			fseek(inf, cur, SEEK_SET);
 		}
-	} while (0 != fseek(inf, -2, SEEK_CUR))
+	} while (0 == fseek(inf, -2, SEEK_CUR));
 	
 	fclose(inf);
 	fclose(outf);
