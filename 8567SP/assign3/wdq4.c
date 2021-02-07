@@ -8,6 +8,7 @@ void copyline(FILE* inf, FILE* outf)
 	char* p = fgets(buf, 1024, inf);
 	if (p)
 	{
+		printf("writing - %s", p);
 		fputs(p, outf);
 	}
 }
@@ -53,7 +54,7 @@ int main(int argc, char * argv[])
 		{
 			copyline(inf, outf);
 		}
-		
+
 		fseek(inf, cur, SEEK_SET);
 	} while (0 == fseek(inf, -1, SEEK_CUR));
 	
