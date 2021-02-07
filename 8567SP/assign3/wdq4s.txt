@@ -1,0 +1,97 @@
+Script started on 2021-02-07 02:24:39-05:00 [TERM="xterm" TTY="/dev/pts/6" COLUMNS="237" LINES="71"]
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign3[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign3[00m$ git pull
+remote: Enumerating objects: 9, done.[K
+remote: Counting objects:  11% (1/9)[Kremote: Counting objects:  22% (2/9)[Kremote: Counting objects:  33% (3/9)[Kremote: Counting objects:  44% (4/9)[Kremote: Counting objects:  55% (5/9)[Kremote: Counting objects:  66% (6/9)[Kremote: Counting objects:  77% (7/9)[Kremote: Counting objects:  88% (8/9)[Kremote: Counting objects: 100% (9/9)[Kremote: Counting objects: 100% (9/9), done.[K
+remote: Compressing objects:  50% (1/2)[Kremote: Compressing objects: 100% (2/2)[Kremote: Compressing objects: 100% (2/2), done.[K
+remote: Total 5 (delta 3), reused 5 (delta 3), pack-reused 0[K
+Unpacking objects:  20% (1/5)   Unpacking objects:  40% (2/5)   Unpacking objects:  60% (3/5)   Unpacking objects:  80% (4/5)   Unpacking objects: 100% (5/5)   Unpacking objects: 100% (5/5), done.
+From https://github.com/fanchuanster/uwinds2
+   2ce1cfc..bf2353a  master     -> origin/master
+Updating 2ce1cfc..bf2353a
+Fast-forward
+ 8567SP/assign3/wdq4.c | 2 [32m+[m[31m-[m
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign3[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign3[00m$ gcc wdq4.c reverseFile[C reverseFile- reverseFileo reverseFile
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign3[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign3[00m$ cat wdq4.c 
+//reverse lines order
+#include <assert.h>
+#include<stdio.h>
+
+void copyline(FILE* inf, FILE* outf)
+{
+	char buf[1024];
+	char* p = fgets(buf, 1024, inf);
+	if (p)
+	{
+		// printf("writing - %s", p);
+		fputs(p, outf);
+	}
+}
+
+int main(int argc, char * argv[])
+{
+	FILE *inf, *outf;
+	int c;
+	
+
+	if (argc != 3)
+	{
+		printf("usage:\n reverseFile infile outfile");
+		return (-2);
+	}
+
+	if ((inf = fopen(argv[1],"r")) == NULL)
+	{
+		printf("Failed to open %s", argv[1]);
+		return (-1);
+	}
+	if ((outf = fopen(argv[2],"w")) == NULL)
+	{
+		printf("Failed to open %s for write", argv[2]);
+		return (-2);
+	}
+
+	if (0 != fseek(inf, -1, SEEK_END))
+	{
+		printf("Failed to move cur to the last char, maybe a empty input file", argv[2]);
+		return (0);
+	}
+
+	do {
+		int cur = ftell(inf);
+		if (0 == cur)
+		{
+			copyline(inf, outf);
+		}
+		else
+		{
+			c = fgetc(inf);
+			if (c == '\n')
+			{
+				copyline(inf, outf);
+			}
+		}
+		fseek(inf, cur, SEEK_SET);		
+	} while (0 == fseek(inf, -1, SEEK_CUR));
+	
+	fclose(inf);
+	fclose(outf);
+
+	return (0);
+}
+
+
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign3[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign3[00m$ cat wdq4.c gcc wdq4.c -o reverseFile
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign3[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign3[00m$ ./res[KverseFile tex[Kst.txt test[K[K[K[Kreversed.txt
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign3[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign3[00m$ cat test.txt 
+hello
+
+I am happy to see you
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign3[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign3[00m$ cat reversed.txt 
+I am happy to see you
+
+hello
+]0;dong23@charlie: ~/ws/uwinds2/8567SP/assign3[01;32mdong23@charlie[00m:[01;34m~/ws/uwinds2/8567SP/assign3[00m$ exit
+exit
+
+Script done on 2021-02-07 02:25:43-05:00 [COMMAND_EXIT_CODE="0"]
