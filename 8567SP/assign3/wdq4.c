@@ -8,8 +8,6 @@ int main(int argc, char * argv[])
 	int c;
 	char buf[1024];
 
-	assert(0);
-
 	if (argc != 3)
 	{
 		printf("usage:\n reverseFile infile outfile");
