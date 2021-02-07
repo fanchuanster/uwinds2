@@ -42,7 +42,6 @@ int main() {
 				waitpid(newpid, &status, 0);
 			}
 		} else {
-			printf("I am the parent process, my pid = %d\n", getpid());
 			sleep(2);
 		}
 	}
