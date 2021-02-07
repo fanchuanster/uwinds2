@@ -2,11 +2,21 @@
 #include <assert.h>
 #include<stdio.h>
 
+void copyline(FILE* inf, FILE* outf)
+{
+	char buf[1024];
+	char* p = fgets(buf, 1024, inf);
+	if (p)
+	{
+		fputs(p, outf);
+	}
+}
+
 int main(int argc, char * argv[])
 {
 	FILE *inf, *outf;
 	int c;
-	char buf[1024];
+	
 
 	if (argc != 3)
 	{
@@ -33,16 +43,17 @@ int main(int argc, char * argv[])
 
 	do {
 		int cur = ftell(inf);
-		c = fgetc(inf);
-
-		if (cur == 0 || c == '\n')
+		if (0 == cur)
 		{
-			char* p = fgets(buf, 1024, inf);
-			if (p)
-			{
-				fputs(p, outf);
-			}
+			copyline(inf, outf);
 		}
+
+		c = fgetc(inf);
+		if (c == '\n')
+		{
+			copyline(inf, outf);
+		}
+		
 		fseek(inf, cur, SEEK_SET);
 	} while (0 == fseek(inf, -1, SEEK_CUR));
 	
