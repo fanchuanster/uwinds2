@@ -7,7 +7,8 @@
 
 int main() {  
 	int newpid;
-	
+	int status;
+
 	const char* message_pattern = "I am a child process, my parent pid = %d, my pid = %d\n";
 
 	printf("I am the parent process, my pid = %d\n", getpid());
@@ -25,7 +26,7 @@ int main() {
 			sleep(1);
 			printf(message_pattern, getppid(), getpid());
 		} else {
-			waitpid(newpid);
+			waitpid(newpid, &status, 0);
 		}
 	}
 	else {
@@ -38,7 +39,7 @@ int main() {
 				sleep(1);
 				printf(message_pattern, getppid(), getpid());
 			} else {
-				waitpid(newpid);
+				waitpid(newpid, &status, 0);
 			}
 		} else {
 			printf("I am the parent process, my pid = %d\n", getpid());
