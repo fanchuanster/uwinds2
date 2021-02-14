@@ -47,9 +47,9 @@ int main(int argc, char *argv[])
 		else {
 			close(fd1);
 		}
-	}
 
-	printf("test strings wrote to %s", output_file);
+		printf("test strings wrote to %s\n", output_file);
+	}	
 	
     return 0;
 }
