@@ -21,6 +21,7 @@ int main(int argc, char *argv[])
 
 	if (pid == 0) {
 		write(fd1, hello_from_child, strlen(hello_from_child));
+		putc('\n', fd1);
 
 		/* sleep to allow parent process to say hello. */
 		sleep(1);
@@ -32,6 +33,7 @@ int main(int argc, char *argv[])
 		sleep(2);
 	} else {
 		write(fd1, hello_from_parent, strlen(hello_from_parent));
+		putc('\n', fd1);
 
 		/* sleep for a while to ensure fd1 closed. */
 		sleep(2);
