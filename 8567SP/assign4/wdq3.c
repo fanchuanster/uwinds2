@@ -11,8 +11,9 @@ int main(int argc, char *argv[])
 	const char* hello_from_child = "Hello from child process, and closing fd1";
 	const char* hello_from_parent = "Hello from parent process";
 	const char* greetings_from_parent = "Greetings from parent process";
+	const char* output_file = "wdq3.txt";
 	
-	if ((fd1 = open("wdq3.txt", O_CREAT | O_WRONLY | O_TRUNC, 0700)) == -1) {
+	if ((fd1 = open(output_file, O_CREAT | O_WRONLY | O_TRUNC, 0700)) == -1) {
 		perror("file problem ");
 		exit(1);
 	}
@@ -47,6 +48,8 @@ int main(int argc, char *argv[])
 			close(fd1);
 		}
 	}
+
+	printf("test strings wrote to %s", output_file);
 	
     return 0;
 }
