@@ -8,7 +8,7 @@ void printpstate(int num, ...)
     va_list arguments;
     va_start(arguments, num);
     int i = 0;
-    printf("pid %d\tppid=%d\n", getpid(), getppid());
+    printf("pid %d, ppid=%d\t", getpid(), getppid());
     for (i=0; i<num; i++)
     {
         printf("%d, ", va_arg(arguments, pid_t));
