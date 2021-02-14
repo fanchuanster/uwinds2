@@ -22,8 +22,8 @@ int main() {
 
     printpstate(3, pid1, pid2, pid3);
 
-    pid1= fork(); /* A */
-
+    pid1= fork(); /* A */   
+    printpstate(3, pid1, pid2, pid3);
     if(pid1==0){
         printpstate(3, pid1, pid2, pid3);
         pid2=fork(); /* B */
