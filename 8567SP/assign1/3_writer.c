@@ -7,38 +7,22 @@
 int main(int argc, char *argv[])
 {
 	int fd1;
-	pid_t pid;
+	long n1;
+	char* str = "101   GM\tBuick\t2010\n102   Ford\tLincoln\t2005";
 	
-	if ((fd1 = open("wdq3.txt", O_CREAT | O_WRONLY | O_TRUNC, 0700)) == -1) {
+	if ((fd1 = open("list1.txt", O_CREAT | O_WRONLY | O_TRUNC, 0700)) == -1) {
 		perror("file problem ");
 		exit(1);
 	}
 
-	pid = fork();
-
-	if (pid == 0) {
-		write(fd1, "Hello from child process, and closing fd1");
-
-		/* sleep to allow parent process to say hello. */
-		sleep(1);
-		close(fd1);
-
-		/* prolong child process longevity to preclude impact by process exit which would impact 
-		 *  fd1 vadility
-		 */
-		sleep(2);
-	} else {
-		write(fd1, "Hello from parent process");
-
-		/* sleep for a while to ensure fd1 closed. */
-		sleep(2);
-		if (-1 == write(fd1, "Greetings from parent process")) {
-			perror("greetings failed ");
-		}
-		else {
-			close(fd1);
-		}
+	n1 = write(fd1, str, strlen(str));
+	if (n1 != strlen(str)) {
+		perror("write problem ");
+		exit(1);
 	}
+	close(fd1);
+
+	printf("file list1.txt created", argv[1]);
 	
     return 0;
 }
