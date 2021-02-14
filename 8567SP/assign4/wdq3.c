@@ -26,6 +26,9 @@ int main(int argc, char *argv[])
 		/* sleep to allow parent process to say hello. */
 		sleep(1);
 		close(fd1);
+		if (-1 == putc('\n', fd1)) {
+			perror("greetings failed in child ");
+		}
 
 		/* prolong child process longevity to preclude impact by process exit which would impact 
 		 *  fd1 vadility
