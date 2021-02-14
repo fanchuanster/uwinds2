@@ -8,6 +8,8 @@ int main(int argc, char *argv[])
 {
 	int fd1;
 	pid_t pid;
+	const char* hello_from_child = "Hello from child process, and closing fd1";
+	const char* hello_from_parent = "Hello from parent process";
 	
 	if ((fd1 = open("wdq3.txt", O_CREAT | O_WRONLY | O_TRUNC, 0700)) == -1) {
 		perror("file problem ");
@@ -17,7 +19,7 @@ int main(int argc, char *argv[])
 	pid = fork();
 
 	if (pid == 0) {
-		write(fd1, "Hello from child process, and closing fd1");
+		write(fd1, hello_from_child, strlen(hello_from_child));
 
 		/* sleep to allow parent process to say hello. */
 		sleep(1);
@@ -28,7 +30,7 @@ int main(int argc, char *argv[])
 		 */
 		sleep(2);
 	} else {
-		write(fd1, "Hello from parent process");
+		write(fd1, hello_from_parent, strlen(hello_from_parent));
 
 		/* sleep for a while to ensure fd1 closed. */
 		sleep(2);
