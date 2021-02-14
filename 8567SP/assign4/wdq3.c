@@ -34,12 +34,13 @@ int main(int argc, char *argv[])
 		/* prolong child process longevity to preclude impact by process exit which would impact 
 		 *  fd1 vadility
 		 */
-		sleep(2);
+		printf("end of child")
 	} else {
 		write(fd1, hello_from_parent, strlen(hello_from_parent));
 		write(fd1, "\n", 1);
 
 		/* sleep for a while to ensure fd1 closed. */
+		printf("writing to the file again");
 		sleep(2);
 		if (-1 == write(fd1, greetings_from_parent, strlen(greetings_from_parent))) {
 			perror("greetings failed ");
