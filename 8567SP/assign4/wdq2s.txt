@@ -1,25 +1,24 @@
-Script started on 2021-02-14 05:28:04-05:00 [TERM="xterm" TTY="/dev/pts/7" COLUMNS="80" LINES="24"]
-]0;dong23@charlie: ~/uwinds2/8567SP/assign4[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign4[00m$ gcc fork5.c 
+Script started on 2021-02-14 05:55:31-05:00 [TERM="xterm" TTY="/dev/pts/7" COLUMNS="80" LINES="24"]
+]0;dong23@charlie: ~/uwinds2/8567SP/assign4[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign4[00m$ gcc fork4[K5.c 
 ]0;dong23@charlie: ~/uwinds2/8567SP/assign4[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign4[00m$ ./a.out 
-main process	pid 18145, ppid=17874	0, 0, 0, 
-A created	pid 18145, ppid=17874	18147, 0, 0, 
-D created	pid 18145, ppid=17874	18147, 0, 18148, 
+main process	pid 5769, ppid=5586	0, 0, 0, 
+A created	pid 5769, ppid=5586	5770, 0, 0, 
+A process	pid 5770, ppid=5769	0, 0, 0, 
 Level 2
 Level 4
-D created	pid 18148, ppid=18145	18147, 0, 0, 
-E created	pid 18148, ppid=18145	18147, 18149, 0, 
+D process	pid 5771, ppid=5769	5770, 0, 0, 
+B created	pid 5770, ppid=5769	0, 5772, 0, 
+B created	pid 5772, ppid=5770	0, 0, 0, 
+C created	pid 5770, ppid=5769	0, 5772, 5774, 
+E created	pid 5771, ppid=5769	5770, 5773, 0, 
+C created	pid 5772, ppid=5770	0, 0, 5775, 
+C created	pid 5774, ppid=5770	0, 5772, 0, 
 Level 2
 Level 3
-E created	pid 18149, ppid=18148	18147, 0, 0, 
+C created	pid 5775, ppid=5772	0, 0, 0, 
+E created	pid 5773, ppid=5771	5770, 0, 0, 
 Level 2
-A created	pid 18147, ppid=18145	0, 0, 0, 
-B created	pid 18147, ppid=18145	0, 18150, 0, 
-B created	pid 18150, ppid=18147	0, 0, 0, 
-C created	pid 18147, ppid=18145	0, 18150, 18151, 
-C created	pid 18150, ppid=18147	0, 0, 18152, 
-C created	pid 18151, ppid=18147	0, 18150, 0, 
-C created	pid 18152, ppid=18150	0, 0, 0, 
 ]0;dong23@charlie: ~/uwinds2/8567SP/assign4[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign4[00m$ exit
 exit
 
-Script done on 2021-02-14 05:28:31-05:00 [COMMAND_EXIT_CODE="0"]
+Script done on 2021-02-14 05:55:43-05:00 [COMMAND_EXIT_CODE="0"]
