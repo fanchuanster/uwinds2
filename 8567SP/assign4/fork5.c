@@ -20,6 +20,8 @@ int main() {
     pid_t pid1, pid2, pid3;
     pid1=0, pid2=0, pid3=0;
 
+    printf("\n");
+
     printpstate(3, pid1, pid2, pid3);
 
     pid1= fork(); /* A */   
