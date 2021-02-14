@@ -10,6 +10,7 @@ int main(int argc, char *argv[])
 	pid_t pid;
 	const char* hello_from_child = "Hello from child process, and closing fd1";
 	const char* hello_from_parent = "Hello from parent process";
+	const char* greetings_from_parent = "Greetings from parent process";
 	
 	if ((fd1 = open("wdq3.txt", O_CREAT | O_WRONLY | O_TRUNC, 0700)) == -1) {
 		perror("file problem ");
@@ -34,7 +35,7 @@ int main(int argc, char *argv[])
 
 		/* sleep for a while to ensure fd1 closed. */
 		sleep(2);
-		if (-1 == write(fd1, "Greetings from parent process")) {
+		if (-1 == write(fd1, greetings_from_parent, strlen(greetings_from_parent))) {
 			perror("greetings failed ");
 		}
 		else {
