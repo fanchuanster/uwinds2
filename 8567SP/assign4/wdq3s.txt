@@ -1,0 +1,12 @@
+Script started on 2021-02-14 06:49:51-05:00 [TERM="xterm" TTY="/dev/pts/7" COLUMNS="80" LINES="24"]
+]0;dong23@charlie: ~/uwinds2/8567SP/assign4[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign4[00m$ gcc wdq3.c 
+]0;dong23@charlie: ~/uwinds2/8567SP/assign4[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign4[00m$ ./a.out 
+greetings failed in child : Bad file descriptor
+test strings wrote to wdq3.txt
+]0;dong23@charlie: ~/uwinds2/8567SP/assign4[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign4[00m$ cat wd wdq3.txt[1Pwdq3.txt[1Pwdq3.txt[1Pdq3.txt
+Hello from parent process
+Hello from child process, and closing fd1
+Greetings from parent process]0;dong23@charlie: ~/uwinds2/8567SP/assign4[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign4[00m$ exit
+exit
+
+Script done on 2021-02-14 06:50:20-05:00 [COMMAND_EXIT_CODE="0"]
