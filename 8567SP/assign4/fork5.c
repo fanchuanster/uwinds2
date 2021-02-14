@@ -23,18 +23,19 @@ int main() {
     printpstate("main process", 3, pid1, pid2, pid3);
 
     pid1= fork(); /* A */   
-    printpstate("A created", 3, pid1, pid2, pid3);
     if(pid1==0){
         pid2=fork(); /* B */
         printpstate("B created", 3, pid1, pid2, pid3);
         pid3=fork(); /* C */
         printpstate("C created", 3, pid1, pid2, pid3);
     } else {
+        printpstate("A created", 3, pid1, pid2, pid3);
         pid3=fork(); /* D */
-        printpstate("D created", 3, pid1, pid2, pid3);
         if(pid3==0) {
             pid2=fork(); /* E */
             printpstate("E created", 3, pid1, pid2, pid3);
+        } else {
+            printpstate("D created", 3, pid1, pid2, pid3);
         }
         if((pid1 == 0)&&(pid2 == 0))
             printf("Level 1\n");
