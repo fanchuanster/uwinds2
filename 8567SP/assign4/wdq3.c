@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 		/* prolong child process longevity to preclude impact by process exit which would impact 
 		 *  fd1 vadility
 		 */
-		printf("end of child")
+		printf("end of child");
 	} else {
 		write(fd1, hello_from_parent, strlen(hello_from_parent));
 		write(fd1, "\n", 1);
