@@ -47,6 +47,7 @@ int main() {
            printf("Level 3\n");
         if(pid3 !=0)
            printf("Level 4\n");
+        sleep(1);
        return 0;
     }
 }
