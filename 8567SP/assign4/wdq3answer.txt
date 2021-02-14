@@ -1,0 +1,2 @@
+As per my experiment, file descriptor, which inherited from parent process and was closed in child process, is still valid in parent process.
+
