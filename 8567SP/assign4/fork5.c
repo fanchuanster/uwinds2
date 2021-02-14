@@ -11,8 +11,9 @@ void printpstate(int num, ...)
     printf("pid %d\tppid=%d\n", getpid(), getppid());
     for (i=0; i<num; i++)
     {
-        printf("%d\n", va_arg(arguments, pid_t));
+        printf("%d, ", va_arg(arguments, pid_t));
     }
+    printf("\n");
 }
 
 int main() {
