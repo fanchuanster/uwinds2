@@ -6,7 +6,7 @@
 
 void printt(char* message) {
 	write(STDOUT_FILENO, message, strlen(message));
-	flush();
+	fsync(STDOUT_FILENO);
 }
 
 void childFunction(char* line) {
