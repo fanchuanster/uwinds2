@@ -85,8 +85,6 @@ int main(int argc, char *argv[])
 			continue;
 		}
 
-		// printl(inpbuf);
-
 		pidc = fork();
 		if (pidc == 0) {
 			childFunction(inpbuf);
