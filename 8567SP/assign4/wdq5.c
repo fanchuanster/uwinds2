@@ -22,6 +22,10 @@ void executeCommand(char* command, char* optionalArgument) {
 		printSubCommand(command, optionalArgument);
 		execlp(command, optionalArgument);
 	}
+	else {
+		int status;
+		waitpid(childPid, &status, 0);
+	}
 }
 
 int main(int argc, char *argv[])
@@ -30,9 +34,12 @@ int main(int argc, char *argv[])
 	char buf[MAXBUF];
 
 	int i;
-	for (i=0; i<argc; i++) {
-		printf(argv[i]);
-		printf("\n");
+	for (i=1; i<argc; i += 2) {
+		char* command = argv[i];
+		char* optionalArgument = "";
+		if (i+1 < argc) {
+			optionalArgument(command, optionalArgument);
+		}
 	}
 		
     return 0;
