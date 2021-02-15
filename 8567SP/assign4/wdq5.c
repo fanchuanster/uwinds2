@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 		char* optionalArgument;
 		optionalArgument = "";
 		if (i+1 < argc) {
-			optionalArgument(command, optionalArgument);
+			optionalArgument = argv[i+1];
 		}
 	}
 		
