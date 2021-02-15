@@ -1,0 +1,138 @@
+Script started on 2021-02-15 07:31:33-05:00 [TERM="xterm" TTY="/dev/pts/7" COLUMNS="80" LINES="24"]
+]0;dong23@charlie: ~/uwinds2/8567SP/assign4[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign4[00m$ cat wdq5.c
+#include <unistd.h> 
+#include <fcntl.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <assert.h>
+#include <sys/wait.h>
+
+void printSubCommand(const char* command, const char* optionalArgument){
+	const int MAXBUF = 256;
+	char buf[MAXBUF];
+
+	sprintf(buf, "in sub process %d, executing %s %s\n", getpid(), command, optionalArgument);
+	printf(buf);
+}
+
+void executeCommand(const char* command, const char* optionalArgument) {
+	pid_t childPid;
+
+	childPid = fork();
+	if (childPid == 0) {
+		printSubCommand(command, optionalArgument);
+		execlp(command, command, optionalArgument, (char*)NULL);
+	}
+	else {
+		int status;
+		waitpid(childPid, &status, 0);
+	}
+}
+
+int main(int argc, char *argv[])
+{
+	const int MAXBUF = 256;
+	char buf[MAXBUF];
+
+	int i;
+	for (i=1; i<argc; i += 2) {
+		char* command = argv[i];
+		char* optionalArgument;
+		optionalArgument = NULL;
+		if (i+1 < argc) {
+			optionalArgument = argv[i+1];
+		}
+		executeCommand(command, optionalArgument);
+	}
+		
+    return 0;
+}
+
+]0;dong23@charlie: ~/uwinds2/8567SP/assign4[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign4[00m$ gcc wq5.c
+[01m[Kgcc:[m[K [01;31m[Kerror: [m[Kwq5.c: No such file or directory
+[01m[Kgcc:[m[K [01;31m[Kfatal error: [m[Kno input files
+compilation terminated.
+]0;dong23@charlie: ~/uwinds2/8567SP/assign4[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign4[00m$ gcc wq5.cdq5.c
+]0;dong23@charlie: ~/uwinds2/8567SP/assign4[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign4[00m$ ./a.out 
+]0;dong23@charlie: ~/uwinds2/8567SP/assign4[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign4[00m$ ./a.out ls -l cat wdq5.c ps
+in sub process 5552, executing ls -l
+total 303
+-rwxr-xr-x 1 dong23 temp  16928 Feb 15 07:31 a.out
+-rw-r--r-- 1 dong23 temp    151 Feb 14 05:15 fork4.c
+-rw-r--r-- 1 dong23 temp   1351 Feb 15 07:14 fork5.c
+-rw-r--r-- 1 dong23 temp    331 Feb 14 05:15 sscanfdemo.c
+-rw-r--r-- 1 dong23 temp      0 Feb 15 07:30 t.txt
+-rw-r--r-- 1 dong23 temp    366 Feb 14 05:15 wdq1.txt
+-rw-r--r-- 1 dong23 temp 240373 Feb 14 06:22 wdq2diagram.jpeg
+-rw-r--r-- 1 dong23 temp   1113 Feb 14 05:55 wdq2s.txt
+-rw-r--r-- 1 dong23 temp    503 Feb 14 05:55 wdq2t.log
+-rw-r--r-- 1 dong23 temp    143 Feb 15 04:59 wdq3answer.txt
+-rw-r--r-- 1 dong23 temp   1377 Feb 15 04:59 wdq3.c
+-rw-r--r-- 1 dong23 temp    915 Feb 14 06:50 wdq3s.txt
+-rw-r--r-- 1 dong23 temp    553 Feb 14 06:50 wdq3t.log
+-rw-r--r-- 1 dong23 temp   2337 Feb 15 06:52 wdq4.c
+-rw-r--r-- 1 dong23 temp   4568 Feb 15 06:55 wdq4s.txt
+-rw-r--r-- 1 dong23 temp   1419 Feb 15 06:55 wdq4t.log
+-rw-r--r-- 1 dong23 temp    993 Feb 15 07:30 wdq5.c
+-rw-r--r-- 1 dong23 temp      0 Feb 15 07:31 wdq5s.txt
+-rw-r--r-- 1 dong23 temp      0 Feb 15 07:31 wdq5t.log
+in sub process 5554, executing cat wdq5.c
+#include <unistd.h> 
+#include <fcntl.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <assert.h>
+#include <sys/wait.h>
+
+void printSubCommand(const char* command, const char* optionalArgument){
+	const int MAXBUF = 256;
+	char buf[MAXBUF];
+
+	sprintf(buf, "in sub process %d, executing %s %s\n", getpid(), command, optionalArgument);
+	printf(buf);
+}
+
+void executeCommand(const char* command, const char* optionalArgument) {
+	pid_t childPid;
+
+	childPid = fork();
+	if (childPid == 0) {
+		printSubCommand(command, optionalArgument);
+		execlp(command, command, optionalArgument, (char*)NULL);
+	}
+	else {
+		int status;
+		waitpid(childPid, &status, 0);
+	}
+}
+
+int main(int argc, char *argv[])
+{
+	const int MAXBUF = 256;
+	char buf[MAXBUF];
+
+	int i;
+	for (i=1; i<argc; i += 2) {
+		char* command = argv[i];
+		char* optionalArgument;
+		optionalArgument = NULL;
+		if (i+1 < argc) {
+			optionalArgument = argv[i+1];
+		}
+		executeCommand(command, optionalArgument);
+	}
+		
+    return 0;
+}
+
+in sub process 5557, executing ps (null)
+  PID TTY          TIME CMD
+ 4945 pts/21   00:00:00 bash
+ 5549 pts/21   00:00:00 a.out
+ 5557 pts/21   00:00:00 ps
+]0;dong23@charlie: ~/uwinds2/8567SP/assign4[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign4[00m$ exit
+exit
+
+Script done on 2021-02-15 07:32:22-05:00 [COMMAND_EXIT_CODE="0"]
