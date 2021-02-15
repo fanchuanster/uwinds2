@@ -2,6 +2,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 void printt(char* message) {
 	write(STDOUT_FILENO, message, strlen(message));
