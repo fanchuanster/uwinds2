@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 			childFunction(line);
 		}
 		else {
-			printff("Created a child to make your operation, waiting");
+			printt("Created a child to make your operation, waiting");
 		}		
 	}
 	
