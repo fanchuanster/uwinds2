@@ -24,17 +24,18 @@ int main(int argc, char *argv[])
 		
 		printt("Enter an arithmetic statement, e.g., 34 + 132 > ");
 
-		char* line;
-		if (NULL == (line = read(STDIN_FILENO, inpbuf, MAXBUF))) {
-			printt("NULL read");
+		ssize_t readSize;
+		if (EOF = (readSize = read(STDIN_FILENO, inpbuf, MAXBUF))) {
+			printt("EOF read");
 			continue;
 		}
 
-		printt(line);
+		printt(readSize);
+		printt(inpbuf);
 
 		pidc = fork();
 		if (pidc == 0) {
-			childFunction(line);
+			childFunction(inpbuf);
 		}
 		else {
 			printt("Created a child to make your operation, waiting");
