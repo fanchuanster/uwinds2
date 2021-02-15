@@ -4,14 +4,17 @@
 #include <stdio.h>
 #include <string.h>
 
-void printt(char* message) {
+void printl(char* message) {
 	write(STDOUT_FILENO, message, strlen(message));
+	if (message[strlen(message)-1] != '\n') {
+		write(STDOUT_FILENO, "\n", 1);
+	}
 	fsync(STDOUT_FILENO);
 }
 
 void childFunction(char* line) {
-	printt("in childFunction");
-	printt(line);
+	printl("in childFunction");
+	printl(line);
 }
 
 int main(int argc, char *argv[])
@@ -24,23 +27,23 @@ int main(int argc, char *argv[])
 	int i = 0;
 	while(i++ < 2) {
 		
-		printt("Enter an arithmetic statement, e.g., 34 + 132 >");
+		printl("Enter an arithmetic statement, e.g., 34 + 132 >");
 
 		ssize_t readSize;
 		if (EOF == (readSize = read(STDIN_FILENO, inpbuf, MAXBUF))) {
-			printt("EOF read");
+			printl("EOF read");
 			continue;
 		}
 
-		// printt(readSize);
-		printt(inpbuf);
+		// printl(readSize);
+		printl(inpbuf);
 
 		pidc = fork();
 		if (pidc == 0) {
 			childFunction(inpbuf);
 		}
 		else {
-			printt("Created a child to make your operation, waiting");
+			printl("Created a child to make your operation, waiting");
 		}		
 	}
 	
