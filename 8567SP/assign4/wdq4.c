@@ -93,8 +93,26 @@ int main(int argc, char *argv[])
 		}
 		else {
 			printl("Created a child to make your operation, waiting");
+			
 			int status;
 			wait(&status);
+
+			status = WEXITSTATUS(status);
+
+			switch(status) {
+				case E_WRONG_STATEMENT:
+					printl("Wrong statement");
+					break;
+				case E_DIVISION_BY_ZERO:
+					printl("Division by zero");
+					break;
+				case E_WRONG_OP:
+					printl("Wrong operator");
+					break;
+				default:
+					assert(status == 0);
+					break;
+			}
 		}		
 	}
 	
