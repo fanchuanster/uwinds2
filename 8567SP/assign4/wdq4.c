@@ -43,7 +43,8 @@ int basicArithmeticsOperation(int operand1, char operator, int operand2) {
 		case '/':
 			return operand1 / operand2;
 		default:
-			assert(false);
+			assert(0);
+			break;
 	}
 }
 
