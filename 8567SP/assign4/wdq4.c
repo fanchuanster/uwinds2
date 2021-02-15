@@ -20,7 +20,7 @@ void childFunction(char* line) {
 	int operand1, operand2;
 	char operator;
 	sscanf(line, "%d %c %d", &operand1, &operator, &operand2);
-	sprintf(tmpbuf, "%d %c %d", operand1, operator, operand2)
+	sprintf(tmpbuf, "%d %c %d", operand1, operator, operand2);
 	printl(tmpbuf);
 }
 
