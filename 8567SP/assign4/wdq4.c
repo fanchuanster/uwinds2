@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 			continue;
 		}
 
-		printt(readSize);
+		// printt(readSize);
 		printt(inpbuf);
 
 		pidc = fork();
