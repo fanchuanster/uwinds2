@@ -41,6 +41,7 @@ int main(int argc, char *argv[])
 		if (i+1 < argc) {
 			optionalArgument = argv[i+1];
 		}
+		executeCommand(command, optionalArgument);
 	}
 		
     return 0;
