@@ -22,14 +22,14 @@ void printl(char* message) {
 	fsync(STDOUT_FILENO);
 }
 
-bool arrayContains(const char* array, char c) {
+int arrayContains(const char* array, char c) {
 	int i =0;
 	for (i=0; i<sizeof(array)/sizeof(array[0]), i++) {
 		if (array[i] == c) {
-			return true;
+			return 1;
 		}
 	}
-	return false;
+	return 0;
 }
 
 int basicArithmeticsOperation(int operand1, char operator, int operand2) {
