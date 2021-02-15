@@ -20,10 +20,10 @@ int main(int argc, char *argv[])
 	char inpbuf[MAXBUF];
 	pid_t pidc;
 
-	int i;
+	int i = 0;
 	while(i++ < 2) {
 		
-		printt("Enter an arithmetic statement, e.g., 34 + 132 > ");
+		printf("Enter an arithmetic statement, e.g., 34 + 132 > ");
 
 		ssize_t readSize;
 		if (EOF == (readSize = read(STDIN_FILENO, inpbuf, MAXBUF))) {
