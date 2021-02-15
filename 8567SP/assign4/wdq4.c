@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <sys/wait.h>
 
 void printl(char* message) {
 	write(STDOUT_FILENO, message, strlen(message));
