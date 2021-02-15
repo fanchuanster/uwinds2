@@ -20,7 +20,7 @@ void executeCommand(const char* command, const char* optionalArgument) {
 	childPid = fork();
 	if (childPid == 0) {
 		printSubCommand(command, optionalArgument);
-		execlp(command, command, optionalArgument);
+		execlp(command, command, optionalArgument, (char*)NULL);
 	}
 	else {
 		int status;
