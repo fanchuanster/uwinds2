@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 		printt("Enter an arithmetic statement, e.g., 34 + 132 > ");
 
 		ssize_t readSize;
-		if (EOF = (readSize = read(STDIN_FILENO, inpbuf, MAXBUF))) {
+		if (EOF == (readSize = read(STDIN_FILENO, inpbuf, MAXBUF))) {
 			printt("EOF read");
 			continue;
 		}
