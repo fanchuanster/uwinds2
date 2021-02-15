@@ -13,6 +13,7 @@ void printpstate(const char* message, int num, ...)
     {
         printf("%d, ", va_arg(arguments, pid_t));
     }
+    va_end(arguments);
     printf("\n");
 }
 
