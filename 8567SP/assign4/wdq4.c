@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 	int i = 0;
 	while(i++ < 2) {
 		
-		printf("Enter an arithmetic statement, e.g., 34 + 132 > ");
+		printf("Enter an arithmetic statement, e.g., 34 + 132 >\n");
 
 		ssize_t readSize;
 		if (EOF == (readSize = read(STDIN_FILENO, inpbuf, MAXBUF))) {
