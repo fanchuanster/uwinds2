@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 	for (i=1; i<argc; i += 2) {
 		char* command = argv[i];
 		char* optionalArgument;
-		optionalArgument = "";
+		optionalArgument = NULL;
 		if (i+1 < argc) {
 			optionalArgument = argv[i+1];
 		}
