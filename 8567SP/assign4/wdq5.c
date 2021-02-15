@@ -30,9 +30,6 @@ void executeCommand(const char* command, const char* optionalArgument) {
 
 int main(int argc, char *argv[])
 {
-	const int MAXBUF = 256;
-	char buf[MAXBUF];
-
 	int i;
 	for (i=1; i<argc; i += 2) {
 		char* command = argv[i];
