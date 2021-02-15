@@ -58,7 +58,7 @@ void childFunction(char* line) {
 	}
 	else if (!arrayContains(VALID_OPERATORS, operator)) {
 		exit(E_WRONG_OP);
-	} else if (operand2 == 0) {
+	} else if (operand2 == 0 && operator == '/') {
 		exit(E_DIVISION_BY_ZERO);
 	}
 
