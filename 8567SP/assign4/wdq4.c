@@ -44,6 +44,8 @@ int main(int argc, char *argv[])
 		}
 		else {
 			printl("Created a child to make your operation, waiting");
+			int status;
+			wait(&status);
 		}		
 	}
 	
