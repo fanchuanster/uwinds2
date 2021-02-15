@@ -7,9 +7,9 @@
 
 void printl(char* message) {
 	write(STDOUT_FILENO, message, strlen(message));
-	if (message[strlen(message)-1] != '\n') {
-		write(STDOUT_FILENO, "\n", 1);
-	}
+	// if (message[strlen(message)-1] != '\n') {
+	// 	write(STDOUT_FILENO, "\n", 1);
+	// }
 	fsync(STDOUT_FILENO);
 }
 
