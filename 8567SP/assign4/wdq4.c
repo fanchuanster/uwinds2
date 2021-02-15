@@ -62,7 +62,7 @@ void childFunction(char* line) {
 		exit(E_DIVISION_BY_ZERO);
 	}
 
-	sprintf(tmpbuf, "%d %c %d = ", operand1, operator, operand2, basicArithmeticsOperation(operand1, operator, operand2));
+	sprintf(tmpbuf, "%d %c %d = %d", operand1, operator, operand2, basicArithmeticsOperation(operand1, operator, operand2));
 	printl(tmpbuf);
 
 	exit(0);
