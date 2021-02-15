@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
 		ssize_t readSize;
 		if (EOF == (readSize = read(STDIN_FILENO, inpbuf, MAXBUF))) {
 			printl("EOF read");
-			continue;
+			break;
 		}
 
 		pidc = fork();
