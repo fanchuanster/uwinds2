@@ -86,8 +86,7 @@ int main(int argc, char *argv[])
 			continue;
 		}
 
-		// printl(readSize);
-		printl(inpbuf);
+		// printl(inpbuf);
 
 		pidc = fork();
 		if (pidc == 0) {
