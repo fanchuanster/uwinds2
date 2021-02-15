@@ -24,7 +24,7 @@ void printl(char* message) {
 
 int arrayContains(const char* array, char c) {
 	int i =0;
-	for (i=0; i<sizeof(array)/sizeof(array[0]), i++) {
+	for (i=0; i<sizeof(array)/sizeof(array[0]); i++) {
 		if (array[i] == c) {
 			return 1;
 		}
