@@ -75,8 +75,7 @@ int main(int argc, char *argv[])
 	char inpbuf[MAXBUF];
 	pid_t pidc;
 
-	int i = 0;
-	while(i++ < 2) {
+	while(1) {
 		
 		printl("Enter an arithmetic statement, e.g., 34 + 132 >");
 
