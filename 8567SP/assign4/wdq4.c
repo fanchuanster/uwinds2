@@ -5,6 +5,8 @@
 #include <string.h>
 #include <sys/wait.h>
 
+static char tmpbuf[1000];
+
 void printl(char* message) {
 	write(STDOUT_FILENO, message, strlen(message));
 	if (message[strlen(message)-1] != '\n') {
@@ -14,8 +16,12 @@ void printl(char* message) {
 }
 
 void childFunction(char* line) {
-	printl("in childFunction");
-	printl(line);
+	printl("I am a child working for my parent");
+	int operand1, operand2;
+	char operator;
+	sscanf(line, "%d %c %d", &operand1, &operator, &operand2);
+	sprintf(tmpbuf, "%d %c %d", operand1, operator, operand2)
+	printl(tmpbuf);
 }
 
 int main(int argc, char *argv[])
