@@ -1,3 +1,3 @@
-answer: it is because the child process created by fork cloned the whole parent process, including the line buffered stdout where there is already a cached text "   first   ", 
-        so it will be output in the child process as well.
+answer: it is because the child process created by fork inherited the entire parent process, including the stdout buffer where there is already a cached text "   first   ", 
+        so it will be output in the child process as well. When I added a '\n' at the end of the first printf to flush the buffer, the duplicated fist output disappeared.
 reference - https://unix.stackexchange.com/questions/447898/why-does-a-program-with-fork-sometimes-print-its-output-multiple-times
