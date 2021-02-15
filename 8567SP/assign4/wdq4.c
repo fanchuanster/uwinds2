@@ -7,6 +7,12 @@
 
 static char tmpbuf[1000];
 
+#define	E_WRONG_STATEMENT	50
+#define	E_DIVISION_BY_ZERO	100
+#define	E_WRONG_OP			200
+
+const char VALID_OPERATORS[] = {'+', '-', '*', '/'};
+
 void printl(char* message) {
 	write(STDOUT_FILENO, message, strlen(message));
 	if (message[strlen(message)-1] != '\n') {
@@ -15,13 +21,49 @@ void printl(char* message) {
 	fsync(STDOUT_FILENO);
 }
 
+bool arrayContains(char* array, char c) {
+	int i =0;
+	for (i=0; i<sizeof(array)/sizeof(array[0]), i++) {
+		if (array[i] == c) {
+			return true;
+		}
+	}
+	return false;
+}
+
+int basicArithmeticsOperation(int operand1, char operator, int operand2) {
+	switch (operator) {
+		case '+':
+			return operand1 + operand2;
+		case '-':
+			return operand1 - operand2;
+		case '*':
+			return operand1 * operand2;
+		case '/':
+			return operand1 / operand2;
+		default:
+			assert(false);
+	}
+}
+
 void childFunction(char* line) {
 	printl("I am a child working for my parent");
 	int operand1, operand2;
 	char operator;
-	sscanf(line, "%d %c %d", &operand1, &operator, &operand2);
-	sprintf(tmpbuf, "%d %c %d", operand1, operator, operand2);
+	int count = sscanf(line, "%d %c %d", &operand1, &operator, &operand2);
+	if (count != 3) {
+		exit(E_WRONG_STATEMENT);
+	}
+	else if (!arrayContains(VALID_OPERATORS, operator)) {
+		exit(E_WRONG_OP);
+	} else if (operand2 == 0) {
+		exit(E_DIVISION_BY_ZERO);
+	}
+
+	sprintf(tmpbuf, "%d %c %d = ", operand1, operator, operand2, basicArithmeticsOperation(operand1, operator, operand2));
 	printl(tmpbuf);
+
+	exit(0);
 }
 
 int main(int argc, char *argv[])
