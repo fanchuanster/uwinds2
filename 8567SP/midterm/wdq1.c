@@ -35,7 +35,7 @@ int main()
     {
         printf("%.2f\n", marks);
         int size = sprintf(buffer, resultpattern, marks, marks * 2);
-        write(df2, buffer, size);
+        write(fd2, buffer, size);
     }
 
     fclose(fp);
