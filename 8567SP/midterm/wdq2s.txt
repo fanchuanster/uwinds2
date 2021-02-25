@@ -1,0 +1,77 @@
+Script started on 2021-02-25 09:56:41-05:00 [TERM="xterm" TTY="/dev/pts/3" COLUMNS="80" LINES="24"]
+]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ cat wdq2.c 
+#include<stdio.h>
+#include<stdlib.h>
+
+#include <unistd.h>
+#include <fcntl.h>
+#include <sys/wait.h>
+
+int main()
+{
+    pid_t pid;
+    int status;
+    const char* child_self_intro = "%s I am a child process, my parent pid = %d, my pid = %d\n";
+
+    printf("I am the parent process, my pid = %d\n", getpid());
+
+    // create c3
+    pid = fork();
+    if (0 == pid)
+    {
+        printf(child_self_intro, ".", getppid(), getpid());
+        exit(0);
+    }
+
+    // create c2
+    pid = fork();
+    if (0 == pid)
+    {
+        printf(child_self_intro, ".", getppid(), getpid());
+        exit(0);
+    }
+
+    // create c1
+    pid = fork();
+    if (0 == pid)
+    {
+        printf(child_self_intro, ".", getppid(), getpid());
+
+        // create c4
+        pid = fork();
+        if (0 == pid)
+        {
+            printf(child_self_intro, "..", getppid(), getpid());
+            sleep(1);   // dummy doing something.
+            exit(57);
+        }
+
+        waitpid(pid, &status, 0);
+
+        printf(". I am process c1 (pid %d), Exit status from child process c4 (pid %d) was %d\n", getpid(), pid, WEXITSTATUS(status));
+
+        // sleep for my parent process to end so myself become an orphan.
+        sleep(3);
+
+        printf(child_self_intro, ".", getppid(), getpid());
+    }
+
+    sleep(1);
+
+    return 0;
+}
+
+]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ gcc wdq2.c 
+]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ ./a.out 
+I am the parent process, my pid = 5597
+. I am a child process, my parent pid = 5597, my pid = 5598
+. I am a child process, my parent pid = 5597, my pid = 5599
+. I am a child process, my parent pid = 5597, my pid = 5600
+.. I am a child process, my parent pid = 5600, my pid = 5601
+]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ . I am process c1 (pid 5600), Exit status from child process c4 (pid 5601) was 57
+. I am a child process, my parent pid = 1, my pid = 5600
+
+]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ exit
+exit
+
+Script done on 2021-02-25 09:57:46-05:00 [COMMAND_EXIT_CODE="0"]
