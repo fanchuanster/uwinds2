@@ -1,0 +1,79 @@
+Script started on 2021-02-25 09:00:48-05:00 [TERM="xterm" TTY="/dev/pts/3" COLUMNS="80" LINES="24"]
+]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ cat wdq1
+cat: wdq1: No such file or directory
+]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ cat wdq1.1[Kc 
+#include<stdio.h>
+#include<stdlib.h>
+
+#include <unistd.h>
+#include <fcntl.h>
+
+int main()
+{
+    FILE *fp;
+    int fd2;
+    char buffer[50];
+    int roll_no, chars;
+    float marks;
+
+    const char* infilename = "records.txt";
+    const char* outfilename = "results.txt";
+
+    const char* resultpattern = "The result of multiplying %.2f by 2 is %.2f\n";
+
+    fp = fopen(infilename, "r");
+    if(fp == NULL)
+    {
+        perror("Error opening file\n");
+        exit(1);
+    }
+
+    if ((fd2 = open(outfilename, O_CREAT | O_RDWR, 0777)) == -1)
+    {
+        perror("Error opening file for output");
+        exit(2);
+    }
+
+
+    while( fscanf(fp, "%f", &marks) != EOF )
+    {
+        printf("%.2f\n", marks);
+        int size = sprintf(buffer, resultpattern, marks, marks * 2);
+        write(fd2, buffer, size);
+    }
+
+    fclose(fp);
+    close(fd2);
+    return 0;
+}
+
+]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ gcc wdq1.c 
+]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ ./a.out 
+12.01
+15.57
+24.56
+]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ cat results.txt 
+The result of multiplying 12.01 by 2 is 24.02
+The result of multiplying 15.57 by 2 is 31.13
+The result of multiplying 24.56 by 2 is 49.12
+]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ ls -l
+total 22
+-rwxr-xr-x 1 dong23 temp 17016 Feb 25 09:01 [0m[01;32ma.out[0m
+-rw-r--r-- 1 dong23 temp    20 Feb 25 08:46 records.txt
+-rwxr-xr-x 1 dong23 temp   138 Feb 25 09:01 [01;32mresults.txt[0m
+-rw-r--r-- 1 dong23 temp   863 Feb 25 08:59 wdq1.c
+-rw-r--r-- 1 dong23 temp     0 Feb 25 09:00 wdq1s.txt
+-rw-r--r-- 1 dong23 temp     0 Feb 25 09:00 wdq1t.log
+]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ rm results.txt 
+]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ ./a.out 
+12.01
+15.57
+24.56
+]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ cat results.txt 
+The result of multiplying 12.01 by 2 is 24.02
+The result of multiplying 15.57 by 2 is 31.13
+The result of multiplying 24.56 by 2 is 49.12
+]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ exit
+exit
+
+Script done on 2021-02-25 09:01:46-05:00 [COMMAND_EXIT_CODE="0"]

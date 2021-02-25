@@ -1,0 +1,3 @@
+The result of multiplying 12.01 by 2 is 24.02
+The result of multiplying 15.57 by 2 is 31.13
+The result of multiplying 24.56 by 2 is 49.12
