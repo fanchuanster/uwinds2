@@ -24,7 +24,7 @@ int main()
         exit(1);
     }
 
-    if ((fd2 = open(outfilename, O_CREAT | O_RDWR, 777)) == -1)
+    if ((fd2 = open(outfilename, O_CREAT | O_RDWR, 0777)) == -1)
     {
         perror("Error opening file for output");
         exit(2);
