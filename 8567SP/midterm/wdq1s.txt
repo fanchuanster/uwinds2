@@ -1,12 +1,30 @@
-Script started on 2021-02-25 09:00:48-05:00 [TERM="xterm" TTY="/dev/pts/3" COLUMNS="80" LINES="24"]
-]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ cat wdq1
-cat: wdq1: No such file or directory
-]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ cat wdq1.1[Kc 
+Script started on 2021-02-25 09:11:02-05:00 [TERM="xterm" TTY="/dev/pts/3" COLUMNS="80" LINES="24"]
+]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ cat g[Kwdq1.c 
 #include<stdio.h>
 #include<stdlib.h>
 
 #include <unistd.h>
 #include <fcntl.h>
+
+void standardio_print(const char* filename)
+{
+    FILE *fp;
+    const int MAX_LEN = 300;
+    char buffer[MAX_LEN];
+
+    if ((fp = fopen(filename, "r")) == NULL)
+    {
+        perror("Error opening file for standardio print\n");
+        exit(1);
+    }
+
+    while (fgets(buffer, MAX_LEN, fp) != NULL)
+    {
+        fputs(buffer, stdout);
+    }
+
+    fclose(fp);
+}
 
 int main()
 {
@@ -34,7 +52,6 @@ int main()
         exit(2);
     }
 
-
     while( fscanf(fp, "%f", &marks) != EOF )
     {
         printf("%.2f\n", marks);
@@ -42,38 +59,24 @@ int main()
         write(fd2, buffer, size);
     }
 
+    standardio_print(outfilename);
+
     fclose(fp);
     close(fd2);
     return 0;
 }
 
-]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ gcc wdq1.c 
+]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ gcc wdq1.c
 ]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ ./a.out 
 12.01
 15.57
 24.56
-]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ cat results.txt 
 The result of multiplying 12.01 by 2 is 24.02
 The result of multiplying 15.57 by 2 is 31.13
 The result of multiplying 24.56 by 2 is 49.12
-]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ ls -l
-total 22
--rwxr-xr-x 1 dong23 temp 17016 Feb 25 09:01 [0m[01;32ma.out[0m
--rw-r--r-- 1 dong23 temp    20 Feb 25 08:46 records.txt
--rwxr-xr-x 1 dong23 temp   138 Feb 25 09:01 [01;32mresults.txt[0m
--rw-r--r-- 1 dong23 temp   863 Feb 25 08:59 wdq1.c
--rw-r--r-- 1 dong23 temp     0 Feb 25 09:00 wdq1s.txt
--rw-r--r-- 1 dong23 temp     0 Feb 25 09:00 wdq1t.log
-]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ rm results.txt 
-]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ ./a.out 
-12.01
-15.57
-24.56
-]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ cat results.txt 
-The result of multiplying 12.01 by 2 is 24.02
-The result of multiplying 15.57 by 2 is 31.13
-The result of multiplying 24.56 by 2 is 49.12
+]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ ls
+[0m[01;32ma.out[0m  records.txt  [01;32mresults.txt[0m  wdq1.c  wdq1s.txt  wdq1t.log
 ]0;dong23@charlie: ~/uwinds2/8567SP/midterm[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/midterm[00m$ exit
 exit
 
-Script done on 2021-02-25 09:01:46-05:00 [COMMAND_EXIT_CODE="0"]
+Script done on 2021-02-25 09:11:28-05:00 [COMMAND_EXIT_CODE="0"]
