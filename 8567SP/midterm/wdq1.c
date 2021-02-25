@@ -8,14 +8,14 @@ int main()
 {
     FILE *fp;
     int fd2;
-    char name[50];
+    char buffer[50];
     int roll_no, chars;
     float marks;
 
     const char* infilename = "records.txt";
     const char* outfilename = "results.txt";
 
-    const char* resultpattern = "The result of multiplying %f by 2 is %f";
+    const char* resultpattern = "The result of multiplying %f by 2 is %f\n";
 
     fp = fopen(infilename, "r");
     if(fp == NULL)
@@ -34,6 +34,8 @@ int main()
     while( fscanf(fp, "%f", &marks) != EOF )
     {
         printf("%.2f\n", marks);
+        int size = sprintf(buffer, resultpattern, marks, marks * 2);
+        write(df2, buffer, size);
     }
 
     fclose(fp);
