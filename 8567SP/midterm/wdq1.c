@@ -15,7 +15,7 @@ int main()
     const char* infilename = "records.txt";
     const char* outfilename = "results.txt";
 
-    const char* resultpattern = "The result of multiplying %f by 2 is %f\n";
+    const char* resultpattern = "The result of multiplying %.2f by 2 is %.2f\n";
 
     fp = fopen(infilename, "r");
     if(fp == NULL)
