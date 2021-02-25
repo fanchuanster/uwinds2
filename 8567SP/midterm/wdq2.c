@@ -8,7 +8,7 @@
 int main()
 {
     pid_t pid;
-    char buffer[100];
+    
     const char* child_self_intro = "%s I am a child process, my parent pid = %d, my pid = %d\n";
 
     printf("I am the parent process, my pid = %d\n", getpid());
@@ -17,7 +17,7 @@ int main()
     pid = fork();
     if (0 == pid)
     {
-        printf(buffer, ".", getppid(), getpid());
+        printf(child_self_intro, ".", getppid(), getpid());
         exit(0);
     }
 
@@ -25,7 +25,7 @@ int main()
     pid = fork();
     if (0 == pid)
     {
-        printf(buffer, ".", getppid(), getpid());
+        printf(child_self_intro, ".", getppid(), getpid());
         exit(0);
     }
 
@@ -33,13 +33,13 @@ int main()
     pid = fork();
     if (0 == pid)
     {
-        printf(buffer, ".", getppid(), getpid());
+        printf(child_self_intro, ".", getppid(), getpid());
 
         // create c4
         pid = fork();
         if (0 == pid)
         {
-            printf(buffer, "..", getppid(), getpid());
+            printf(child_self_intro, "..", getppid(), getpid());
             sleep(1);   // dummy doing something.
             exit(57);
         }
@@ -52,7 +52,7 @@ int main()
         // sleep for my parent process to end so myself become an orphan.
         sleep(3);
 
-        printf(buffer, ".", getppid(), getpid());
+        printf(child_self_intro, ".", getppid(), getpid());
 
         exit(0);
     }
