@@ -53,8 +53,6 @@ int main()
         sleep(3);
 
         printf(child_self_intro, ".", getppid(), getpid());
-
-        exit(0);
     }
 
     sleep(1);
