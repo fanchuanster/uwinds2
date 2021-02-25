@@ -47,7 +47,7 @@ int main()
         int status;
         waitpid(pid, &status, 0);
 
-        printf(". I am process c1 pid %d, Exit status from child process c4 pid %d was %d\n", getpid(), pid, WEXITSTATUS(status));
+        printf(". I am process c1 (pid %d), Exit status from child process c4 (pid %d) was %d\n", getpid(), pid, WEXITSTATUS(status));
 
         // sleep for my parent process to end so myself become an orphan.
         sleep(3);
