@@ -40,7 +40,7 @@ int main()
         if (0 == pid)
         {
             printf(child_self_intro, "..", getppid(), getpid());
-            // sleep(1);   // dummy doing something.
+            sleep(1);   // dummy doing something.
             exit(57);
         }
 
@@ -49,12 +49,12 @@ int main()
         printf(". I am process c1 (pid %d), Exit status from child process c4 (pid %d) was %d\n", getpid(), pid, WEXITSTATUS(status));
 
         // sleep for my parent process to end so myself become an orphan.
-        sleep(2);
+        sleep(3);
 
         printf(child_self_intro, ".", getppid(), getpid());
     }
 
-    sleep(3);
+    sleep(1);
 
     return 0;
 }
