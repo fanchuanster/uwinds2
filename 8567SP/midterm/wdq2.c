@@ -8,7 +8,7 @@
 int main()
 {
     pid_t pid;
-    
+    int status;
     const char* child_self_intro = "%s I am a child process, my parent pid = %d, my pid = %d\n";
 
     printf("I am the parent process, my pid = %d\n", getpid());
@@ -40,17 +40,16 @@ int main()
         if (0 == pid)
         {
             printf(child_self_intro, "..", getppid(), getpid());
-            sleep(1);   // dummy doing something.
+            // sleep(1);   // dummy doing something.
             exit(57);
         }
 
-        int status;
         waitpid(pid, &status, 0);
 
         printf(". I am process c1 (pid %d), Exit status from child process c4 (pid %d) was %d\n", getpid(), pid, WEXITSTATUS(status));
 
         // sleep for my parent process to end so myself become an orphan.
-        sleep(3);
+        sleep(2);
 
         printf(child_self_intro, ".", getppid(), getpid());
     }
