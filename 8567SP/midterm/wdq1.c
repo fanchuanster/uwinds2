@@ -4,6 +4,26 @@
 #include <unistd.h>
 #include <fcntl.h>
 
+void standardio_print(const char* filename)
+{
+    FILE *fp;
+    const int MAX_LEN = 300;
+    char buffer[MAX_LEN];
+
+    if ((fp = fopen(filename, "r")) == NULL)
+    {
+        perror("Error opening file for standardio print\n");
+        exit(1);
+    }
+
+    while (fgets(buffer, MAX_LEN, fp) != NULL)
+    {
+        fputs(buffer, stdout);
+    }
+
+    fclose(fp);
+}
+
 int main()
 {
     FILE *fp;
@@ -30,13 +50,14 @@ int main()
         exit(2);
     }
 
-
     while( fscanf(fp, "%f", &marks) != EOF )
     {
         printf("%.2f\n", marks);
         int size = sprintf(buffer, resultpattern, marks, marks * 2);
         write(fd2, buffer, size);
     }
+
+    standardio_print(outfilename);
 
     fclose(fp);
     close(fd2);
