@@ -54,7 +54,7 @@ int main()
         printf(child_self_intro, ".", getppid(), getpid());
     }
 
-    sleep(1);
+    sleep(3);
 
     return 0;
 }
