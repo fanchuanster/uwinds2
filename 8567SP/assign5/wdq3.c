@@ -59,4 +59,6 @@ int main(int argc, char *argv[]){
     // restore handlers
     signal(SIGINT, oldhandler);
     signal(SIGTSTP, oldhandler2);
+
+    sleep(2);
 }
