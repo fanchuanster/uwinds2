@@ -1,0 +1,16 @@
+pcsc1.c - output is 
+"User defined signal 1"
+Child process sent a SIGUSR1 to parent process, whereas in parent process there is no handler registered for it yet, so it triggered the default behaviour that outputed a comment and terminate the parent process:
+Signal     Value     Action   Comment
+----------------------------------------------------
+SIGUSR1   30,10,16    Term    User-defined signal 1
+
+pcsc2.c - output is 
+"Parent is running"
+Both child process and parent process were paused without any incoming signal, switching could not happen.
+
+pcsc3.c - output is
+"Child is running
+User defined signal 1"
+The situation resembles what's in pcsc1.c, parent process received a SIGUSER1 from child process, however, in parent process no registered for it at that time, so it triggered default behaviour that outputed a comment and terminated the parent process.
+
