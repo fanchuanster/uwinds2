@@ -20,6 +20,8 @@ int main(int argc, char *argv[]){
     void (*oldhandler)();
     void (*oldhandler2)();
 
+    printf("SIGTSTP %d\n", SIGTSTP);
+
     /***
      * a. install handler for Ctrl + C and ignore Ctrl + Z
      ***/     
