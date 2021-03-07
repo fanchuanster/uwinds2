@@ -1,0 +1,128 @@
+Script started on 2021-03-07 04:55:36-05:00 [TERM="xterm" TTY="/dev/pts/5" COLUMNS="80" LINES="24"]
+]0;dong23@charlie: ~/uwinds2/8567SP/assign5[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign5[00m$ cat wdq3.c 
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <signal.h>
+#include <sys/wait.h>
+
+void myhandler(int dummy){  
+	printf("ctrl-c pressed in process %d! - signo %d\n", getpid(), dummy);
+}
+
+void childDeath(int dummy){  
+	int status;
+	pid_t pid = wait(&status);
+	printf("Child %d has terminated with status %d\n", pid, WEXITSTATUS(status));
+}
+
+int main(int argc, char *argv[]){  
+	pid_t pid;
+
+    void (*oldhandler)();
+    void (*oldhandler2)();
+
+    printf("SIGTSTP %d\n", SIGTSTP);
+
+    /***
+     * a. install handler for Ctrl + C and ignore Ctrl + Z
+     ***/     
+	oldhandler = signal(SIGINT, myhandler);
+    oldhandler2 = signal(SIGTSTP, SIG_IGN);
+
+    signal(SIGCHLD, childDeath);
+
+    /***
+     * b. test installed handler for Ctrl + C and ignored Ctrl + Z.
+     ***/
+    printf("for ignored Ctrl + Z or Ctrl + C, test them within 15 seconds.\n");
+    int i;
+    while (i++ < 15) {
+        printf("w %d\n", i);
+        sleep(1);
+    }
+
+    if((pid=fork())==0){ //child process code
+        execlp("./donothing", (char*)NULL);
+    }
+
+    /***
+     * wait execlp is completed. as exec() will reset installed handlers to default, but keep ignored signals ignored.
+     * fork() inherits handler settings from parent.
+     ***/
+    sleep(1);
+
+    for(i=1; i<=15; i++) {
+        printf("I am in parent process (pid %d).\n", getpid());
+        //send a Ctrl + C signal to child and parent process.
+        kill(pid, SIGINT);
+        kill(pid, SIGTSTP);
+
+        kill(getpid(), SIGINT);
+        kill(getpid(), SIGTSTP);
+     
+        sleep(1);
+    }
+
+    // restore handlers
+    signal(SIGINT, oldhandler);
+    signal(SIGTSTP, oldhandler2);
+
+    sleep(2);
+}]0;dong23@charlie: ~/uwinds2/8567SP/assign5[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign5[00m$ gcc wdq3.c 
+]0;dong23@charlie: ~/uwinds2/8567SP/assign5[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign5[00m$ ./a.out 
+SIGTSTP 20
+for ignored Ctrl + Z or Ctrl + C, test them within 15 seconds.
+w 1
+w 2
+w 3
+w 4
+w 5
+w 6
+w 7
+^Cctrl-c pressed in process 2438! - signo 2
+w 8
+w 9
+w 10
+^Cctrl-c pressed in process 2438! - signo 2
+w 11
+w 12
+^Zw 13
+w 14
+w 15
+ Do nothing program.
+I am in parent process (pid 2438).
+ctrl-c pressed in process 2438! - signo 2
+Child 2505 has terminated with status 0
+I am in parent process (pid 2438).
+ctrl-c pressed in process 2438! - signo 2
+I am in parent process (pid 2438).
+ctrl-c pressed in process 2438! - signo 2
+I am in parent process (pid 2438).
+ctrl-c pressed in process 2438! - signo 2
+I am in parent process (pid 2438).
+ctrl-c pressed in process 2438! - signo 2
+I am in parent process (pid 2438).
+ctrl-c pressed in process 2438! - signo 2
+I am in parent process (pid 2438).
+ctrl-c pressed in process 2438! - signo 2
+I am in parent process (pid 2438).
+ctrl-c pressed in process 2438! - signo 2
+I am in parent process (pid 2438).
+ctrl-c pressed in process 2438! - signo 2
+I am in parent process (pid 2438).
+ctrl-c pressed in process 2438! - signo 2
+I am in parent process (pid 2438).
+ctrl-c pressed in process 2438! - signo 2
+I am in parent process (pid 2438).
+ctrl-c pressed in process 2438! - signo 2
+I am in parent process (pid 2438).
+ctrl-c pressed in process 2438! - signo 2
+I am in parent process (pid 2438).
+ctrl-c pressed in process 2438! - signo 2
+I am in parent process (pid 2438).
+ctrl-c pressed in process 2438! - signo 2
+]0;dong23@charlie: ~/uwinds2/8567SP/assign5[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign5[00m$ exit
+exit
+
+Script done on 2021-03-07 04:56:42-05:00 [COMMAND_EXIT_CODE="0"]
