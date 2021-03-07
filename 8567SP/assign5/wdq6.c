@@ -18,17 +18,16 @@ int main(int argc, char *argv[]){
             sleep(1);
 		}
 	}
-	else  //parent
-		while(1){
-            sleep(3);
-			kill(pid, SIGSTOP);
-			printf("SIGSTOP has been sent to Child\n");  
-            sleep(3);
-            kill(pid, SIGCONT);
-            printf("SIGCONT has been sent to Child\n");
-            sleep(3);
-            kill(pid, SIGTERM);
-			printf("SIGTERM has been sent to Child\n");
+	else {
+        sleep(3);
+        kill(pid, SIGSTOP);
+        printf("SIGSTOP has been sent to Child\n");  
+        sleep(3);
+        kill(pid, SIGCONT);
+        printf("SIGCONT has been sent to Child\n");
+        sleep(3);
+        kill(pid, SIGTERM);
+        printf("SIGTERM has been sent to Child\n");
 	}
     sleep(1);
 
