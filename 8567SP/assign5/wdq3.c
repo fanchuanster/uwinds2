@@ -43,9 +43,15 @@ int main(int argc, char *argv[]){
     if((pid=fork())==0){ //child process code
         execlp("./donothing", (char*)NULL);
     }
-    
+
+    /***
+     * ensure execlp is completed. as exec() will reset installed handlers to default, but keep ignored signals ignored.
+     * fork() inherits handler settings from parent.
+     ***/
+    sleep(1);
+
     for(i=1; i<=2; i++) {
-        printf("I am in parent process (%d).\n", getpid());
+        printf("I am in parent process (pid %d).\n", getpid());
         //send a Ctrl + C signal to child and parent process.
         kill(pid, SIGINT);
         kill(pid, SIGTSTP);
