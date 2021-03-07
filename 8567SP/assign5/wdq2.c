@@ -22,5 +22,5 @@ int main(int argc, char *argv[]){
     }
     printf("Created a child, pid=%d, pause...\n", pid);
     pause();
-    printf("parent process ends.");
+    printf("parent process ended.\n");
 }
