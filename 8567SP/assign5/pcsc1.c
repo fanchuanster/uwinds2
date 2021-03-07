@@ -26,7 +26,7 @@ int main(int argc, char *argv[]){
 			signal(SIGUSR1, action);  
 			kill(getppid(), SIGUSR1);
 			sleep(1);
-			int status
+			int status;
 			waitpid(getppid(), &status, 0);
 			printf("parent has terminated with status %d\n", WEXITSTATUS(status));
 			printf("child paused\n");
