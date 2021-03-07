@@ -21,7 +21,7 @@ int main(int argc, char *argv[]){
 	else {
         sleep(3);
         kill(pid, SIGSTOP);
-        printf("SIGSTOP has been sent to Child\n");  
+        printf("SIGSTOP has been sent to Child, sleeping for 3 seconds in parent process.\n");  
         sleep(3);
         kill(pid, SIGCONT);
         printf("SIGCONT has been sent to Child\n");
