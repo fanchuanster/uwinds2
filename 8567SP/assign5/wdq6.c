@@ -14,12 +14,13 @@ int main(int argc, char *argv[]){
 	if((pid=fork())==0) {//child
 		int counter;
 		while(1){
-			printf("In child process, counter \n", ++counter);
+			printf("In child process, counter %d\n", ++counter);
             sleep(1);
 		}
 	}
 	else  //parent
 		while(1){
+            sleep(3);
 			kill(pid, SIGSTOP);
 			printf("SIGSTOP has been sent to Child\n");  
             sleep(3);
@@ -30,6 +31,6 @@ int main(int argc, char *argv[]){
 			printf("SIGTERM has been sent to Child\n");
 	}
     sleep(1);
-    
+
     return 0;
 }
