@@ -4,7 +4,7 @@
 #include <string.h>
 
 int main(int argc, char *argv[]) {
-	const int max = 10000;
+	const int max = 1000;
 	int i = 0;
 	char* desc = 0;
 	while (i++ < max) {
