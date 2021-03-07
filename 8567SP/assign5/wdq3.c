@@ -20,6 +20,7 @@ int main(int argc, char *argv[]){
     int i;
     while (i++ < 10) {
         printf("w %d\n", i);
+        sleep(1);
     }
 
     // if((pid=fork())==0){ //child process code
