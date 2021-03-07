@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
 	char* desc = 0;
 	while (i++ < max) {
 		desc = strsignal(i);
-		if (desc) {
+		if (strcmpi("Unknown signal", desc) != 0) {
 			printf("%d - %s", i, desc);
 		}		
 	}
