@@ -24,7 +24,7 @@ int main(int argc, char *argv[]){
      * a. install handler for Ctrl + C and ignore Ctrl + Z
      ***/     
 	oldhandler = signal(SIGINT, myhandler);
-    oldhandler2 = signal(SIGSTOP, SIG_IGN);
+    oldhandler2 = signal(SIGTSTP, SIG_IGN);
 
     signal(SIGCHLD, childDeath);
 
@@ -47,16 +47,16 @@ int main(int argc, char *argv[]){
         //send a Ctrl + C signal to child or myself
         if (i % 2) {
             kill(pid, SIGINT);
-            kill(pid, SIGSTOP);
+            kill(pid, SIGTSTP);
         }
         else {
             kill(getpid(), SIGINT);
-            kill(getpid(), SIGSTOP);
+            kill(getpid(), SIGTSTP);
         }        
         sleep(1);
     }
 
     // restore handlers
     signal(SIGINT, oldhandler);
-    signal(SIGSTOP, oldhandler2);
+    signal(SIGTSTP, oldhandler2);
 }
