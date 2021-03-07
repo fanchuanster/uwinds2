@@ -5,7 +5,7 @@
 #include <sys/wait.h>
 
 void myhandler(int dummy){  
-	printf("ctrl-c pressed! - %d", dummy);
+	printf("ctrl-c pressed! - %d\n", dummy);
 }
 
 void childDeath(int dummy){  
