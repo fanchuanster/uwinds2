@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
 	char* desc = 0;
 	while (i++ < max) {
 		desc = strsignal(i);
-		if (strstr(desc, "Unknown signal") != 0) {
+		if (strstr(desc, "Unknown signal") == 0) {
 			printf("%d - %s\n", i, desc);
 		}		
 	}
