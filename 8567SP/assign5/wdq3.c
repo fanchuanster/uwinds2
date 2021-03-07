@@ -5,7 +5,7 @@
 #include <sys/wait.h>
 
 void myhandler(int dummy){  
-	printf("ctrl-c pressed! - signo %d\n", dummy);
+	printf("ctrl-c pressed in process %d! - signo %d\n", getpid(), dummy);
 }
 
 void childDeath(int dummy){  
@@ -44,7 +44,7 @@ int main(int argc, char *argv[]){
         execlp("./donothing", (char*)NULL);
     }
     
-    for(i=1; i<=1; i++) {
+    for(i=1; i<=2; i++) {
         printf("I am in parent process (%d).\n", getpid());
         //send a Ctrl + C signal to child and parent process.
         kill(pid, SIGINT);
