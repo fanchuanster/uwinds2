@@ -32,7 +32,7 @@ int main(int argc, char *argv[]){
     pause();
 
     // restore handler.
-    oldhandler = signal(SIGALRM, oldhandler);
+    signal(SIGALRM, oldhandler);
 
     printf("done");
 
