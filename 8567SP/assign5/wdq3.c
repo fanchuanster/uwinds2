@@ -44,14 +44,14 @@ int main(int argc, char *argv[]){
         execlp("./donothing", (char*)NULL);
     }
     
-    for(i=1; i<=5; i++) {
+    for(i=1; i<=1; i++) {
         printf("I am in parent process (%d).\n", getpid());
         //send a Ctrl + C signal to child and parent process.
         kill(pid, SIGINT);
         kill(pid, SIGTSTP);
 
-        kill(getpid(), SIGINT);
-        kill(getpid(), SIGTSTP);
+        // kill(getpid(), SIGINT);
+        // kill(getpid(), SIGTSTP);
      
         sleep(1);
     }
