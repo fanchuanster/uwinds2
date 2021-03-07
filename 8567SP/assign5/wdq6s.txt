@@ -1,0 +1,51 @@
+Script started on 2021-03-07 06:04:40-05:00 [TERM="xterm" TTY="/dev/pts/5" COLUMNS="80" LINES="24"]
+]0;dong23@charlie: ~/uwinds2/8567SP/assign5[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign5[00m$ cat wdq6.c 
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <signal.h>
+
+void action(int dummy){  
+  	 sleep(1); 
+	 printf("Switching\n");
+}
+
+int main(int argc, char *argv[]){  
+	pid_t pid;
+
+	if((pid=fork())==0) {//child
+		int counter;
+		while(1){
+			printf("In child process, counter %d\n", ++counter);
+            sleep(1);
+		}
+	}
+	else {
+        sleep(3);
+        kill(pid, SIGSTOP);
+        printf("SIGSTOP has been sent to Child, sleeping for 3 seconds in parent process.\n");  
+        sleep(3);
+        kill(pid, SIGCONT);
+        printf("SIGCONT has been sent to Child\n");
+        sleep(3);
+        kill(pid, SIGTERM);
+        printf("SIGTERM has been sent to Child\n");
+	}
+    sleep(1);
+
+    return 0;
+}]0;dong23@charlie: ~/uwinds2/8567SP/assign5[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign5[00m$ cat wdq6.c [7Pexit./a.out [4@gcc pcsc3.c[C[4P./a.out[C[4Pexitcat wdq6.c [Kgcc wdq6.c 
+]0;dong23@charlie: ~/uwinds2/8567SP/assign5[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign5[00m$ ./a.out 
+In child process, counter 1
+In child process, counter 2
+In child process, counter 3
+SIGSTOP has been sent to Child, sleeping for 3 seconds in parent process.
+SIGCONT has been sent to Child
+In child process, counter 4
+In child process, counter 5
+In child process, counter 6
+SIGTERM has been sent to Child
+]0;dong23@charlie: ~/uwinds2/8567SP/assign5[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign5[00m$ exit
+exit
+
+Script done on 2021-03-07 06:05:35-05:00 [COMMAND_EXIT_CODE="0"]
