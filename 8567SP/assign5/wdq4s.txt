@@ -1,0 +1,53 @@
+Script started on 2021-03-07 05:11:19-05:00 [TERM="xterm" TTY="/dev/pts/5" COLUMNS="80" LINES="24"]
+]0;dong23@charlie: ~/uwinds2/8567SP/assign5[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign5[00m$ cat wdq4.c
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <signal.h>
+#include <sys/wait.h>
+
+void my_alarm_handler(int dummy){  
+	printf("Ding!\n", getpid(), dummy);
+}
+
+int main(int argc, char *argv[]){  
+	pid_t pid;
+    void (*oldhandler)(int);
+    int alarm_in_seconds;
+
+    if (argc != 2) {
+        printf("usage: alarm n\n");
+        exit(1);
+    }
+
+    printf("alarm application starting\n");
+
+    alarm_in_seconds = atoi(argv[1]);
+
+	oldhandler = signal(SIGALRM, my_alarm_handler);
+
+    if((pid=fork())==0){ //child process code
+        sleep(alarm_in_seconds);
+        kill(getppid(), SIGALRM);
+        exit(0);
+    }
+    printf("waiting for alarm to go off\n");
+    pause();
+
+    // restore handler.
+    signal(SIGALRM, oldhandler);
+
+    printf("done");
+
+    return 0;
+}]0;dong23@charlie: ~/uwinds2/8567SP/assign5[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign5[00m$ gcc wdq4.c 
+]0;dong23@charlie: ~/uwinds2/8567SP/assign5[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign5[00m$ ./a.out 
+usage: alarm n
+]0;dong23@charlie: ~/uwinds2/8567SP/assign5[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign5[00m$ ./a.out 5
+alarm application starting
+waiting for alarm to go off
+Ding!
+done]0;dong23@charlie: ~/uwinds2/8567SP/assign5[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign5[00m$ exit
+exit
+
+Script done on 2021-03-07 05:11:51-05:00 [COMMAND_EXIT_CODE="0"]
