@@ -8,18 +8,29 @@ void myhandler(int dummy){
 	printf("ctrl-c pressed! - %d", dummy);
 }
 
+void childDeath(int dummy){  
+	int status;
+	pid_t pid = wait(&status);
+	printf("Child %d has terminated with status %d\n", pid, WEXITSTATUS(status));
+}
+
 int main(int argc, char *argv[]){  
 	pid_t pid;
 
     void (*oldhandler)();
     void (*oldhandler2)();
 
-    // install handler for Ctrl + C
+    /***
+     * a. install handler for Ctrl + C and ignore Ctrl + Z
+     ***/     
 	oldhandler = signal(SIGINT, myhandler);
-
-    // ignore Ctrl + Z 24
     oldhandler2 = signal(SIGSTOP, SIG_IGN);
 
+    signal(SIGCHLD, childDeath);
+
+    /***
+     * b. test installed handler for Ctrl + C and ignored Ctrl + Z.
+     ***/
     printf("for ignored Ctrl + Z or Ctrl + C, test them within 10 seconds.\n")
     int i;
     while (i++ <= 10) {
@@ -31,10 +42,19 @@ int main(int argc, char *argv[]){
         execlp("./donothing", (char*)NULL);
     }
     
-    for(i=1; i<=15; i++){
-    printf("I am in parent process.\n");
-    //send a signal to child
-    sleep(1);}
+    for(i=1; i<=15; i++) {
+        printf("I am in parent process (%d).\n", getpid());
+        //send a Ctrl + C signal to child or myself
+        if (i % 2) {
+            kill(pid, SIGINT);
+            kill(pid, SIGSTOP);
+        }
+        else {
+            kill(getpid(), SIGINT);
+            kill(getpid(), SIGSTOP);
+        }        
+        sleep(1);
+    }
 
     // restore handlers
     signal(SIGINT, oldhandler);
