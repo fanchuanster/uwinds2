@@ -17,7 +17,10 @@ int main(int argc, char *argv[]){
     // ignore Ctrl + Z SIGSTOP
     signal(24, SIG_IGN);
 
-    sleep(10);
+    int i;
+    while (i++ < 10) {
+        printf("w %d\n", i);
+    }
 
     // if((pid=fork())==0){ //child process code
     //     sleep(5);  
