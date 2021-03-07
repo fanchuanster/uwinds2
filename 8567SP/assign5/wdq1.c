@@ -8,13 +8,9 @@ int main(int argc, char *argv[]) {
 	int i = 0;
 	char* desc = 0;
 	while (i++ < max) {
-		printf(i);
 		desc = strsignal(i);
 		if (desc) {
-			printf(desc);
-		} else {
-			printf("None");
-		}
-		printf("\n");
+			printf("%d - %s", i, desc);
+		}		
 	}
 }
