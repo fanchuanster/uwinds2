@@ -33,7 +33,7 @@ int main(int argc, char *argv[]){
      ***/
     printf("for ignored Ctrl + Z or Ctrl + C, test them within 10 seconds.\n")
     int i;
-    while (i++ <= 10) {
+    while (i++ <= 20) {
         printf("w %d\n", i);
         sleep(1);
     }
