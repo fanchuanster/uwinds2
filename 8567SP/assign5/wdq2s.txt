@@ -1,0 +1,35 @@
+Script started on 2021-03-07 03:19:22-05:00 [TERM="xterm" TTY="/dev/pts/5" COLUMNS="80" LINES="24"]
+]0;dong23@charlie: ~/uwinds2/8567SP/assign5[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign5[00m$ cat wdq2.c 
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <signal.h>
+#include <sys/wait.h>
+
+void childDeath(int dummy){  
+	int status;
+	pid_t pid = wait(&status);
+	printf("Child %d has terminated with status %d\n", pid, WEXITSTATUS(status));
+}
+
+int main(int argc, char *argv[]){  
+	pid_t pid;
+
+    // install handler for SIGCHLD
+	signal(SIGCHLD, childDeath);
+
+    if((pid=fork())==0){ //child process code
+        sleep(5);  
+        exit(10);
+    }
+    printf("Created a child, pid=%d, pause...\n", pid);
+    pause();
+    printf("parent process ends.");
+}]0;dong23@charlie: ~/uwinds2/8567SP/assign5[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign5[00m$ gcc wdq2.c 
+]0;dong23@charlie: ~/uwinds2/8567SP/assign5[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign5[00m$ ./a.out 
+Created a child, pid=3327, pause...
+Child 3327 has terminated with status 10
+parent process ends.]0;dong23@charlie: ~/uwinds2/8567SP/assign5[01;32mdong23@charlie[00m:[01;34m~/uwinds2/8567SP/assign5[00m$ exit
+exit
+
+Script done on 2021-03-07 03:19:54-05:00 [COMMAND_EXIT_CODE="0"]
