@@ -45,7 +45,7 @@ int main(int argc, char *argv[]){
     }
 
     /***
-     * ensure execlp is completed. as exec() will reset installed handlers to default, but keep ignored signals ignored.
+     * wait execlp is completed. as exec() will reset installed handlers to default, but keep ignored signals ignored.
      * fork() inherits handler settings from parent.
      ***/
     sleep(1);
