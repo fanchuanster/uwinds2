@@ -31,7 +31,7 @@ int main(int argc, char *argv[]){
     /***
      * b. test installed handler for Ctrl + C and ignored Ctrl + Z.
      ***/
-    printf("for ignored Ctrl + Z or Ctrl + C, test them within 10 seconds.\n")
+    printf("for ignored Ctrl + Z or Ctrl + C, test them within 10 seconds.\n");
     int i;
     while (i++ <= 20) {
         printf("w %d\n", i);
