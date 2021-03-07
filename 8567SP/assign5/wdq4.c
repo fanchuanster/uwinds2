@@ -27,6 +27,7 @@ int main(int argc, char *argv[]){
     if((pid=fork())==0){ //child process code
         sleep(alarm_in_seconds);
         kill(getppid(), SIGALRM);
+        exit(0);
     }
     printf("waiting for alarm to go off\n");
     pause();
