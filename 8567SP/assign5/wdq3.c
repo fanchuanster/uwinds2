@@ -14,8 +14,8 @@ int main(int argc, char *argv[]){
     // install handler for Ctrl + C
 	signal(SIGINT, myhandler);
 
-    // ignore Ctrl + Z
-    signal(SIGSTOP, SIG_IGN);
+    // ignore Ctrl + Z SIGSTOP
+    signal(24, SIG_IGN);
 
     sleep(10);
 
