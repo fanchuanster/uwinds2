@@ -50,14 +50,14 @@ int main(int argc, char *argv[]){
      ***/
     sleep(1);
 
-    for(i=1; i<=2; i++) {
+    for(i=1; i<=15; i++) {
         printf("I am in parent process (pid %d).\n", getpid());
         //send a Ctrl + C signal to child and parent process.
         kill(pid, SIGINT);
         kill(pid, SIGTSTP);
 
-        // kill(getpid(), SIGINT);
-        // kill(getpid(), SIGTSTP);
+        kill(getpid(), SIGINT);
+        kill(getpid(), SIGTSTP);
      
         sleep(1);
     }
